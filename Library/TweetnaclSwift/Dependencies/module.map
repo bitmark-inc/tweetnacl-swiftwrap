@@ -1,0 +1,5 @@
+module CTweetNacl [system] {
+    header "tweetnacl.h"
+    header "randombytes_deterministic.h"
+    export *
+}

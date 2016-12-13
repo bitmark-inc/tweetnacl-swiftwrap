@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Library/TweetnaclSwift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Example/TweetNaclSwift_Example.xcodeproj">
+   </FileRef>
+</Workspace>

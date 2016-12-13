@@ -1,0 +1,713 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5821181D1DFE49D200F6E1F3 /* NSData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821181C1DFE49D200F6E1F3 /* NSData+Extensions.swift */; };
+		5821182C1DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582118231DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework */; };
+		582118311DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582118301DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.swift */; };
+		582118331DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 582118251DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		582118741DFE544700F6E1F3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FC1DFA6A6C00D93962 /* Constant.swift */; };
+		582118751DFE544E00F6E1F3 /* Tweetnacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */; };
+		582118761DFE545F00F6E1F3 /* NSData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821181C1DFE49D200F6E1F3 /* NSData+Extensions.swift */; };
+		582118771DFE546D00F6E1F3 /* randombytes_deterministic.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */; };
+		582118781DFE547000F6E1F3 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6D01DFA58BF00D93962 /* tweetnacl.h */; };
+		582118791DFE547300F6E1F3 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CF1DFA58BF00D93962 /* tweetnacl.c */; };
+		5821187A1DFE547600F6E1F3 /* randombytes_deterministic.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */; };
+		5826E6BC1DFA57E700D93962 /* TweetnaclSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5826E6B21DFA57E700D93962 /* TweetnaclSwift.framework */; };
+		5826E6C11DFA57E700D93962 /* TweetnaclSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6C01DFA57E700D93962 /* TweetnaclSwiftTests.swift */; };
+		5826E6C31DFA57E700D93962 /* TweetnaclSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6B51DFA57E700D93962 /* TweetnaclSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5826E6D11DFA58BF00D93962 /* randombytes_deterministic.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */; };
+		5826E6D21DFA58BF00D93962 /* randombytes_deterministic.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */; };
+		5826E6D31DFA58BF00D93962 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CF1DFA58BF00D93962 /* tweetnacl.c */; };
+		5826E6D41DFA58BF00D93962 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6D01DFA58BF00D93962 /* tweetnacl.h */; };
+		5826E6FB1DFA5D2B00D93962 /* Tweetnacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */; };
+		5826E6FD1DFA6A6C00D93962 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FC1DFA6A6C00D93962 /* Constant.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5821182D1DFE4F6400F6E1F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5826E6A91DFA57E700D93962 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 582118221DFE4F6400F6E1F3;
+			remoteInfo = TweetNaclSwift_iOS;
+		};
+		5826E6BD1DFA57E700D93962 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5826E6A91DFA57E700D93962 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5826E6B11DFA57E700D93962;
+			remoteInfo = TweetnaclSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5821181C1DFE49D200F6E1F3 /* NSData+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+Extensions.swift"; sourceTree = "<group>"; };
+		582118231DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweetNaclSwift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		582118251DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetNaclSwift_iOS.h; sourceTree = "<group>"; };
+		582118261DFE4F6400F6E1F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5821182B1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetNaclSwift_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		582118301DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetNaclSwift_iOSTests.swift; sourceTree = "<group>"; };
+		582118321DFE4F6400F6E1F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5826E6B21DFA57E700D93962 /* TweetnaclSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweetnaclSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5826E6B51DFA57E700D93962 /* TweetnaclSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetnaclSwift.h; sourceTree = "<group>"; };
+		5826E6B61DFA57E700D93962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TweetnaclSwift/Info.plist; sourceTree = "<group>"; };
+		5826E6BB1DFA57E700D93962 /* TweetnaclSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetnaclSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5826E6C01DFA57E700D93962 /* TweetnaclSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetnaclSwiftTests.swift; sourceTree = "<group>"; };
+		5826E6C21DFA57E700D93962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = randombytes_deterministic.c; sourceTree = "<group>"; };
+		5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = randombytes_deterministic.h; sourceTree = "<group>"; };
+		5826E6CF1DFA58BF00D93962 /* tweetnacl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tweetnacl.c; sourceTree = "<group>"; };
+		5826E6D01DFA58BF00D93962 /* tweetnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetnacl.h; sourceTree = "<group>"; };
+		5826E6D51DFA592C00D93962 /* module.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
+		5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweetnacl.swift; sourceTree = "<group>"; };
+		5826E6FC1DFA6A6C00D93962 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5821181F1DFE4F6400F6E1F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		582118281DFE4F6400F6E1F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5821182C1DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6AE1DFA57E700D93962 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6B81DFA57E700D93962 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5826E6BC1DFA57E700D93962 /* TweetnaclSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		582118241DFE4F6400F6E1F3 /* TweetNaclSwift_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				582118251DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h */,
+				582118261DFE4F6400F6E1F3 /* Info.plist */,
+			);
+			path = TweetNaclSwift_iOS;
+			sourceTree = "<group>";
+		};
+		5821182F1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				582118301DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.swift */,
+				582118321DFE4F6400F6E1F3 /* Info.plist */,
+			);
+			path = TweetNaclSwift_iOSTests;
+			sourceTree = "<group>";
+		};
+		5826E6A81DFA57E700D93962 = {
+			isa = PBXGroup;
+			children = (
+				5826E6B41DFA57E700D93962 /* TweetnaclSwift */,
+				5826E6B61DFA57E700D93962 /* Info.plist */,
+				5826E6BF1DFA57E700D93962 /* TweetnaclSwiftTests */,
+				582118241DFE4F6400F6E1F3 /* TweetNaclSwift_iOS */,
+				5821182F1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests */,
+				5826E6B31DFA57E700D93962 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5826E6B31DFA57E700D93962 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5826E6B21DFA57E700D93962 /* TweetnaclSwift.framework */,
+				5826E6BB1DFA57E700D93962 /* TweetnaclSwiftTests.xctest */,
+				582118231DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework */,
+				5821182B1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5826E6B41DFA57E700D93962 /* TweetnaclSwift */ = {
+			isa = PBXGroup;
+			children = (
+				5826E6B51DFA57E700D93962 /* TweetnaclSwift.h */,
+				5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */,
+				5826E6FC1DFA6A6C00D93962 /* Constant.swift */,
+				5821181C1DFE49D200F6E1F3 /* NSData+Extensions.swift */,
+				5826E6CC1DFA58BF00D93962 /* Dependencies */,
+			);
+			path = TweetnaclSwift;
+			sourceTree = "<group>";
+		};
+		5826E6BF1DFA57E700D93962 /* TweetnaclSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				5826E6C01DFA57E700D93962 /* TweetnaclSwiftTests.swift */,
+				5826E6C21DFA57E700D93962 /* Info.plist */,
+			);
+			path = TweetnaclSwiftTests;
+			sourceTree = "<group>";
+		};
+		5826E6CC1DFA58BF00D93962 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				5826E6D51DFA592C00D93962 /* module.map */,
+				5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */,
+				5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */,
+				5826E6CF1DFA58BF00D93962 /* tweetnacl.c */,
+				5826E6D01DFA58BF00D93962 /* tweetnacl.h */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		582118201DFE4F6400F6E1F3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582118771DFE546D00F6E1F3 /* randombytes_deterministic.h in Headers */,
+				582118781DFE547000F6E1F3 /* tweetnacl.h in Headers */,
+				582118331DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6AF1DFA57E700D93962 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5826E6D21DFA58BF00D93962 /* randombytes_deterministic.h in Headers */,
+				5826E6D41DFA58BF00D93962 /* tweetnacl.h in Headers */,
+				5826E6C31DFA57E700D93962 /* TweetnaclSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		582118221DFE4F6400F6E1F3 /* TweetNaclSwift_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 582118381DFE4F6400F6E1F3 /* Build configuration list for PBXNativeTarget "TweetNaclSwift_iOS" */;
+			buildPhases = (
+				5821181E1DFE4F6400F6E1F3 /* Sources */,
+				5821181F1DFE4F6400F6E1F3 /* Frameworks */,
+				582118201DFE4F6400F6E1F3 /* Headers */,
+				582118211DFE4F6400F6E1F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TweetNaclSwift_iOS;
+			productName = TweetNaclSwift_iOS;
+			productReference = 582118231DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5821182A1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 582118391DFE4F6400F6E1F3 /* Build configuration list for PBXNativeTarget "TweetNaclSwift_iOSTests" */;
+			buildPhases = (
+				582118271DFE4F6400F6E1F3 /* Sources */,
+				582118281DFE4F6400F6E1F3 /* Frameworks */,
+				582118291DFE4F6400F6E1F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5821182E1DFE4F6400F6E1F3 /* PBXTargetDependency */,
+			);
+			name = TweetNaclSwift_iOSTests;
+			productName = TweetNaclSwift_iOSTests;
+			productReference = 5821182B1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5826E6B11DFA57E700D93962 /* TweetnaclSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5826E6C61DFA57E700D93962 /* Build configuration list for PBXNativeTarget "TweetnaclSwift" */;
+			buildPhases = (
+				5826E6AD1DFA57E700D93962 /* Sources */,
+				5826E6AE1DFA57E700D93962 /* Frameworks */,
+				5826E6AF1DFA57E700D93962 /* Headers */,
+				5826E6B01DFA57E700D93962 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TweetnaclSwift;
+			productName = TweetnaclSwift;
+			productReference = 5826E6B21DFA57E700D93962 /* TweetnaclSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5826E6BA1DFA57E700D93962 /* TweetnaclSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5826E6C91DFA57E700D93962 /* Build configuration list for PBXNativeTarget "TweetnaclSwiftTests" */;
+			buildPhases = (
+				5826E6B71DFA57E700D93962 /* Sources */,
+				5826E6B81DFA57E700D93962 /* Frameworks */,
+				5826E6B91DFA57E700D93962 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5826E6BE1DFA57E700D93962 /* PBXTargetDependency */,
+			);
+			name = TweetnaclSwiftTests;
+			productName = TweetnaclSwiftTests;
+			productReference = 5826E6BB1DFA57E700D93962 /* TweetnaclSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5826E6A91DFA57E700D93962 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Bitmark;
+				TargetAttributes = {
+					582118221DFE4F6400F6E1F3 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					5821182A1DFE4F6400F6E1F3 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Manual;
+					};
+					5826E6B11DFA57E700D93962 = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					5826E6BA1DFA57E700D93962 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5826E6AC1DFA57E700D93962 /* Build configuration list for PBXProject "TweetnaclSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5826E6A81DFA57E700D93962;
+			productRefGroup = 5826E6B31DFA57E700D93962 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5826E6B11DFA57E700D93962 /* TweetnaclSwift */,
+				5826E6BA1DFA57E700D93962 /* TweetnaclSwiftTests */,
+				582118221DFE4F6400F6E1F3 /* TweetNaclSwift_iOS */,
+				5821182A1DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		582118211DFE4F6400F6E1F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		582118291DFE4F6400F6E1F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6B01DFA57E700D93962 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6B91DFA57E700D93962 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5821181E1DFE4F6400F6E1F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582118761DFE545F00F6E1F3 /* NSData+Extensions.swift in Sources */,
+				5821187A1DFE547600F6E1F3 /* randombytes_deterministic.c in Sources */,
+				582118751DFE544E00F6E1F3 /* Tweetnacl.swift in Sources */,
+				582118791DFE547300F6E1F3 /* tweetnacl.c in Sources */,
+				582118741DFE544700F6E1F3 /* Constant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		582118271DFE4F6400F6E1F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582118311DFE4F6400F6E1F3 /* TweetNaclSwift_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6AD1DFA57E700D93962 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5821181D1DFE49D200F6E1F3 /* NSData+Extensions.swift in Sources */,
+				5826E6FB1DFA5D2B00D93962 /* Tweetnacl.swift in Sources */,
+				5826E6D11DFA58BF00D93962 /* randombytes_deterministic.c in Sources */,
+				5826E6D31DFA58BF00D93962 /* tweetnacl.c in Sources */,
+				5826E6FD1DFA6A6C00D93962 /* Constant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5826E6B71DFA57E700D93962 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5826E6C11DFA57E700D93962 /* TweetnaclSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5821182E1DFE4F6400F6E1F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 582118221DFE4F6400F6E1F3 /* TweetNaclSwift_iOS */;
+			targetProxy = 5821182D1DFE4F6400F6E1F3 /* PBXContainerItemProxy */;
+		};
+		5826E6BE1DFA57E700D93962 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5826E6B11DFA57E700D93962 /* TweetnaclSwift */;
+			targetProxy = 5826E6BD1DFA57E700D93962 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		582118341DFE4F6400F6E1F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TweetNaclSwift_iOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitmark.TweetNaclSwift-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		582118351DFE4F6400F6E1F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TweetNaclSwift_iOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitmark.TweetNaclSwift-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		582118361DFE4F6400F6E1F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = TweetNaclSwift_iOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitmark.TweetNaclSwift-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		582118371DFE4F6400F6E1F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = TweetNaclSwift_iOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitmark.TweetNaclSwift-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5826E6C41DFA57E700D93962 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/TweetnaclSwift/Dependencies";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5826E6C51DFA57E700D93962 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/TweetnaclSwift/Dependencies";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5826E6C71DFA57E700D93962 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = TweetnaclSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.TweetnaclSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5826E6C81DFA57E700D93962 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = TweetnaclSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.TweetnaclSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5826E6CA1DFA57E700D93962 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TweetnaclSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.TweetnaclSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5826E6CB1DFA57E700D93962 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TweetnaclSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.TweetnaclSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		582118381DFE4F6400F6E1F3 /* Build configuration list for PBXNativeTarget "TweetNaclSwift_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				582118341DFE4F6400F6E1F3 /* Debug */,
+				582118351DFE4F6400F6E1F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		582118391DFE4F6400F6E1F3 /* Build configuration list for PBXNativeTarget "TweetNaclSwift_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				582118361DFE4F6400F6E1F3 /* Debug */,
+				582118371DFE4F6400F6E1F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5826E6AC1DFA57E700D93962 /* Build configuration list for PBXProject "TweetnaclSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5826E6C41DFA57E700D93962 /* Debug */,
+				5826E6C51DFA57E700D93962 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5826E6C61DFA57E700D93962 /* Build configuration list for PBXNativeTarget "TweetnaclSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5826E6C71DFA57E700D93962 /* Debug */,
+				5826E6C81DFA57E700D93962 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5826E6C91DFA57E700D93962 /* Build configuration list for PBXNativeTarget "TweetnaclSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5826E6CA1DFA57E700D93962 /* Debug */,
+				5826E6CB1DFA57E700D93962 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5826E6A91DFA57E700D93962 /* Project object */;
+}
