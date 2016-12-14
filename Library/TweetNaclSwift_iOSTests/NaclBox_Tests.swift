@@ -47,11 +47,13 @@ class NaclBox_Test: XCTestCase {
         
         let testSuite = XCTestSuite(name: NSStringFromClass(self))
         
-        // A new test instance is created for each set of input + each test method
-        // For example, there are 5 data sets and 2 test methods. This means
-        // there will be 10 test case instances created and executed
+        let testBundle = Bundle(for: NaclBox_Test.self)
+        let fileURL = testBundle.url(forResource: "BoxTestData", withExtension: "json")
+        let fileData = try! Data(contentsOf: fileURL!)
+        let json = try! JSONSerialization.jsonObject(with: fileData, options: [])
+        let arrayOfData = json as! [Array<String>]
         
-        for array in boxTestData {
+        for array in arrayOfData {
             addTestsWithArray(array: array, toTestSuite: testSuite)
         }
         

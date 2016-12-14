@@ -52,10 +52,6 @@ class NaclSecretbox_Tests: XCTestCase {
         
         let testSuite = XCTestSuite(name: NSStringFromClass(self))
         
-        // A new test instance is created for each set of input + each test method
-        // For example, there are 5 data sets and 2 test methods. This means
-        // there will be 10 test case instances created and executed
-        
         let testBundle = Bundle(for: NaclSecretbox_Tests.self)
         let fileURL = testBundle.url(forResource: "SecretboxTestData", withExtension: "json")
         let fileData = try! Data(contentsOf: fileURL!)

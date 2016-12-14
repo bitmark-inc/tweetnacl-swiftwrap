@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5821181D1DFE49D200F6E1F3 /* NSData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821181C1DFE49D200F6E1F3 /* NSData+Extensions.swift */; };
 		5821182C1DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582118231DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.framework */; };
-		582118311DFE4F6400F6E1F3 /* NaclBox_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582118301DFE4F6400F6E1F3 /* NaclBox_Tests.swift */; };
 		582118331DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 582118251DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		582118741DFE544700F6E1F3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FC1DFA6A6C00D93962 /* Constant.swift */; };
 		582118751DFE544E00F6E1F3 /* Tweetnacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */; };
@@ -32,10 +31,15 @@
 		585EF9441E011FC80021BF4F /* NaclSecretbox_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EF9421E011FC80021BF4F /* NaclSecretbox_Tests.swift */; };
 		585EF9461E01207F0021BF4F /* SecretboxTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 585EF9451E01207F0021BF4F /* SecretboxTestData.json */; };
 		585EF9471E01207F0021BF4F /* SecretboxTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 585EF9451E01207F0021BF4F /* SecretboxTestData.json */; };
-		5874881B1DFFD70F00575F92 /* BoxTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874881A1DFFD70F00575F92 /* BoxTestData.swift */; };
+		585EF9491E0137990021BF4F /* NaclScalarMulti_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EF9481E0137990021BF4F /* NaclScalarMulti_Tests.swift */; };
+		585EF94A1E0137990021BF4F /* NaclScalarMulti_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585EF9481E0137990021BF4F /* NaclScalarMulti_Tests.swift */; };
+		585EF94C1E013BC30021BF4F /* ScalarMultiTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 585EF94B1E013BC30021BF4F /* ScalarMultiTestData.json */; };
+		585EF94D1E013BC30021BF4F /* ScalarMultiTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 585EF94B1E013BC30021BF4F /* ScalarMultiTestData.json */; };
+		585EF94F1E01485D0021BF4F /* NaclBox_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582118301DFE4F6400F6E1F3 /* NaclBox_Tests.swift */; };
+		585EF9501E01485E0021BF4F /* NaclBox_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582118301DFE4F6400F6E1F3 /* NaclBox_Tests.swift */; };
+		585EF9521E0148770021BF4F /* BoxTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 585EF9511E0148770021BF4F /* BoxTestData.json */; };
 		5874881D1DFFEE0E00575F92 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874881C1DFFEE0E00575F92 /* NaclSign_Tests.swift */; };
 		5874881E1DFFEE0E00575F92 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874881C1DFFEE0E00575F92 /* NaclSign_Tests.swift */; };
-		5874881F1DFFEE1400575F92 /* NaclBox_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582118301DFE4F6400F6E1F3 /* NaclBox_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +83,9 @@
 		584433E51DFFF17500F44C81 /* SignTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignTestData.json; sourceTree = "<group>"; };
 		585EF9421E011FC80021BF4F /* NaclSecretbox_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclSecretbox_Tests.swift; sourceTree = "<group>"; };
 		585EF9451E01207F0021BF4F /* SecretboxTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SecretboxTestData.json; sourceTree = "<group>"; };
-		5874881A1DFFD70F00575F92 /* BoxTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTestData.swift; sourceTree = "<group>"; };
+		585EF9481E0137990021BF4F /* NaclScalarMulti_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclScalarMulti_Tests.swift; sourceTree = "<group>"; };
+		585EF94B1E013BC30021BF4F /* ScalarMultiTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScalarMultiTestData.json; sourceTree = "<group>"; };
+		585EF9511E0148770021BF4F /* BoxTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BoxTestData.json; sourceTree = "<group>"; };
 		5874881C1DFFEE0E00575F92 /* NaclSign_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclSign_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,10 +137,12 @@
 			children = (
 				582118301DFE4F6400F6E1F3 /* NaclBox_Tests.swift */,
 				5874881C1DFFEE0E00575F92 /* NaclSign_Tests.swift */,
+				585EF9481E0137990021BF4F /* NaclScalarMulti_Tests.swift */,
 				585EF9421E011FC80021BF4F /* NaclSecretbox_Tests.swift */,
 				582118321DFE4F6400F6E1F3 /* Info.plist */,
-				5874881A1DFFD70F00575F92 /* BoxTestData.swift */,
+				585EF9511E0148770021BF4F /* BoxTestData.json */,
 				584433E51DFFF17500F44C81 /* SignTestData.json */,
+				585EF94B1E013BC30021BF4F /* ScalarMultiTestData.json */,
 				585EF9451E01207F0021BF4F /* SecretboxTestData.json */,
 			);
 			path = TweetNaclSwift_iOSTests;
@@ -357,6 +365,8 @@
 			files = (
 				584433E61DFFF17500F44C81 /* SignTestData.json in Resources */,
 				585EF9471E01207F0021BF4F /* SecretboxTestData.json in Resources */,
+				585EF94D1E013BC30021BF4F /* ScalarMultiTestData.json in Resources */,
+				585EF9521E0148770021BF4F /* BoxTestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				585EF9461E01207F0021BF4F /* SecretboxTestData.json in Resources */,
+				585EF94C1E013BC30021BF4F /* ScalarMultiTestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,8 +405,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5874881B1DFFD70F00575F92 /* BoxTestData.swift in Sources */,
-				582118311DFE4F6400F6E1F3 /* NaclBox_Tests.swift in Sources */,
+				585EF94A1E0137990021BF4F /* NaclScalarMulti_Tests.swift in Sources */,
+				585EF94F1E01485D0021BF4F /* NaclBox_Tests.swift in Sources */,
 				5874881E1DFFEE0E00575F92 /* NaclSign_Tests.swift in Sources */,
 				585EF9441E011FC80021BF4F /* NaclSecretbox_Tests.swift in Sources */,
 			);
@@ -417,8 +428,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5874881F1DFFEE1400575F92 /* NaclBox_Tests.swift in Sources */,
+				585EF9491E0137990021BF4F /* NaclScalarMulti_Tests.swift in Sources */,
 				5874881D1DFFEE0E00575F92 /* NaclSign_Tests.swift in Sources */,
+				585EF9501E01485E0021BF4F /* NaclBox_Tests.swift in Sources */,
 				5826E6C11DFA57E700D93962 /* TweetnaclSwiftTests.swift in Sources */,
 				585EF9431E011FC80021BF4F /* NaclSecretbox_Tests.swift in Sources */,
 			);
