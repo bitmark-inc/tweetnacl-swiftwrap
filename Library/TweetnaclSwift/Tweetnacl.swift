@@ -39,6 +39,20 @@ class NaclUtil {
         }
     }
     
+    public static func randomBytes(_ length: Int) throws -> NSData {
+        guard let data = NSMutableData(length: length) else {
+            throw(NaclUtilError.internalError)
+        }
+        
+        let result = SecRandomCopyBytes(kSecRandomDefault, data.length, data.mutableBytesPtr())
+        
+        if result != 0 {
+            throw(NaclUtilError.internalError)
+        }
+        
+        return data
+    }
+    
     public static func hash(message: NSData) throws -> NSData {
         guard let hash = NSMutableData(length: crypto_hash_BYTES) else {
             throw(NaclUtilError.internalError)
@@ -77,21 +91,6 @@ fileprivate class NaclWrapper {
         case invalidParameters
         case internalError
         case creationFailed
-    }
-    
-    
-    fileprivate static func randomBytes(_ length: Int) throws -> NSData {
-        guard let data = NSMutableData(length: length) else {
-            throw(NaclWrapperError.internalError)
-        }
-        
-        let result = SecRandomCopyBytes(kSecRandomDefault, data.length, data.mutableBytesPtr())
-        
-        if result != 0 {
-            throw(NaclWrapperError.creationFailed)
-        }
-        
-        return data
     }
     
     fileprivate static func crypto_box_keypair(pk: inout NSMutableData, sk: inout NSMutableData) throws {
@@ -141,15 +140,20 @@ public class NaclSecretBox {
         
         _ = CTweetNacl.crypto_secretbox_xsalsa20poly1305_tweet(c.mutableBytesPtr(), m.bytesPtr(), UInt64(m.length), nonce.bytesPtr(), key.bytesPtr())
         
-        return c.subdata(with: NSMakeRange(crypto_secretbox_BOXZEROBYTES, c.length - crypto_secretbox_BOXZEROBYTES)) as NSData
+        return NSData(data: c.subdata(with: NSMakeRange(crypto_secretbox_BOXZEROBYTES, c.length - crypto_secretbox_BOXZEROBYTES)))
     }
     
     public static func open(box: NSData, nonce: NSData, key: NSData) throws -> NSData {
         try NaclUtil.checkLengths(key: key, nonce: nonce)
         
-        guard let c = NSMutableData(length: crypto_secretbox_ZEROBYTES + box.length) else {
-            throw(NaclSecretBoxError.internalError)
+        // Fill data
+        var cValues = [UInt8](repeating:0, count:crypto_secretbox_BOXZEROBYTES + box.length)
+        let boxByte = [UInt8](box as Data)
+        for index in 0..<box.length {
+            cValues[index + crypto_secretbox_BOXZEROBYTES] = boxByte[index]
         }
+        
+        let c = NSData(bytes: &cValues, length: crypto_secretbox_BOXZEROBYTES + box.length)
         
         guard let m = NSMutableData(length: c.length) else {
             throw(NaclSecretBoxError.internalError)
@@ -165,7 +169,7 @@ public class NaclSecretBox {
             throw(NaclSecretBoxError.creationFailed)
         }
         
-        return m.subdata(with: NSMakeRange(crypto_secretbox_BOXZEROBYTES, c.length - crypto_secretbox_BOXZEROBYTES)) as NSData
+        return NSData(data: m.subdata(with: NSMakeRange(crypto_secretbox_ZEROBYTES, c.length - crypto_secretbox_ZEROBYTES)))
     }
 }
 
@@ -381,7 +385,9 @@ public class NaclSign {
             guard var pk = NSMutableData(length: crypto_sign_PUBLICKEYBYTES) else {
                 throw(NaclSignError.internalError)
             }
-            var sk = seed.mutableCopy() as! NSMutableData
+            
+            let seedPtr = seed.bytes
+            var sk = NSMutableData(bytes: seedPtr, length: seed.length)
             
             try NaclWrapper.crypto_sign_keypair_seeded(pk: &pk, sk: &sk)
             

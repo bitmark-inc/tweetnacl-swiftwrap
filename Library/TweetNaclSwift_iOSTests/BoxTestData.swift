@@ -8,7 +8,7 @@
 
 import Foundation
 
-let boxRandomData = [
+let boxTestData = [
     [
         "vSwMiFeDLVceYF4LXzDB45w7O6jMzTF28yiYpe27Sk8=",
         "fRU+1AfJ8wFqZcRKlwzJAMmFD42dpLFOHUrCFRUefKE=",

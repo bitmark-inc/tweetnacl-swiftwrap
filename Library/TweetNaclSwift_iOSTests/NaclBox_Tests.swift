@@ -1,6 +1,6 @@
 //
-//  TweetNaclSwift_iOSTests.swift
-//  TweetNaclSwift_iOSTests
+//  NaclBox_Tests.swift
+//  NaclBox_Tests
 //
 //  Created by Anh Nguyen on 12/12/16.
 //  Copyright © 2016 Bitmark. All rights reserved.
@@ -51,7 +51,7 @@ class NaclBox_Test: XCTestCase {
         // For example, there are 5 data sets and 2 test methods. This means
         // there will be 10 test case instances created and executed
         
-        for array in boxRandomData {
+        for array in boxTestData {
             addTestsWithArray(array: array, toTestSuite: testSuite)
         }
         
