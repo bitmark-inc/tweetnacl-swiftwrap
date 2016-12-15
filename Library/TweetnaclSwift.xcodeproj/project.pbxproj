@@ -13,15 +13,11 @@
 		582118741DFE544700F6E1F3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FC1DFA6A6C00D93962 /* Constant.swift */; };
 		582118751DFE544E00F6E1F3 /* Tweetnacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */; };
 		582118761DFE545F00F6E1F3 /* NSData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821181C1DFE49D200F6E1F3 /* NSData+Extensions.swift */; };
-		582118771DFE546D00F6E1F3 /* randombytes_deterministic.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */; };
 		582118781DFE547000F6E1F3 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6D01DFA58BF00D93962 /* tweetnacl.h */; };
 		582118791DFE547300F6E1F3 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CF1DFA58BF00D93962 /* tweetnacl.c */; };
-		5821187A1DFE547600F6E1F3 /* randombytes_deterministic.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */; };
 		5826E6BC1DFA57E700D93962 /* TweetnaclSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5826E6B21DFA57E700D93962 /* TweetnaclSwift.framework */; };
 		5826E6C11DFA57E700D93962 /* TweetnaclSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6C01DFA57E700D93962 /* TweetnaclSwiftTests.swift */; };
 		5826E6C31DFA57E700D93962 /* TweetnaclSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6B51DFA57E700D93962 /* TweetnaclSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5826E6D11DFA58BF00D93962 /* randombytes_deterministic.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */; };
-		5826E6D21DFA58BF00D93962 /* randombytes_deterministic.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */; };
 		5826E6D31DFA58BF00D93962 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6CF1DFA58BF00D93962 /* tweetnacl.c */; };
 		5826E6D41DFA58BF00D93962 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5826E6D01DFA58BF00D93962 /* tweetnacl.h */; };
 		5826E6FB1DFA5D2B00D93962 /* Tweetnacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5826E6FA1DFA5D2B00D93962 /* Tweetnacl.swift */; };
@@ -73,8 +69,6 @@
 		5826E6BB1DFA57E700D93962 /* TweetnaclSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetnaclSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5826E6C01DFA57E700D93962 /* TweetnaclSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetnaclSwiftTests.swift; sourceTree = "<group>"; };
 		5826E6C21DFA57E700D93962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = randombytes_deterministic.c; sourceTree = "<group>"; };
-		5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = randombytes_deterministic.h; sourceTree = "<group>"; };
 		5826E6CF1DFA58BF00D93962 /* tweetnacl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tweetnacl.c; sourceTree = "<group>"; };
 		5826E6D01DFA58BF00D93962 /* tweetnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetnacl.h; sourceTree = "<group>"; };
 		5826E6D51DFA592C00D93962 /* module.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
@@ -196,8 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				5826E6D51DFA592C00D93962 /* module.map */,
-				5826E6CD1DFA58BF00D93962 /* randombytes_deterministic.c */,
-				5826E6CE1DFA58BF00D93962 /* randombytes_deterministic.h */,
 				5826E6CF1DFA58BF00D93962 /* tweetnacl.c */,
 				5826E6D01DFA58BF00D93962 /* tweetnacl.h */,
 			);
@@ -211,7 +203,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				582118771DFE546D00F6E1F3 /* randombytes_deterministic.h in Headers */,
 				582118781DFE547000F6E1F3 /* tweetnacl.h in Headers */,
 				582118331DFE4F6400F6E1F3 /* TweetNaclSwift_iOS.h in Headers */,
 			);
@@ -221,7 +212,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5826E6D21DFA58BF00D93962 /* randombytes_deterministic.h in Headers */,
 				5826E6D41DFA58BF00D93962 /* tweetnacl.h in Headers */,
 				5826E6C31DFA57E700D93962 /* TweetnaclSwift.h in Headers */,
 			);
@@ -394,7 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				582118761DFE545F00F6E1F3 /* NSData+Extensions.swift in Sources */,
-				5821187A1DFE547600F6E1F3 /* randombytes_deterministic.c in Sources */,
 				582118751DFE544E00F6E1F3 /* Tweetnacl.swift in Sources */,
 				582118791DFE547300F6E1F3 /* tweetnacl.c in Sources */,
 				582118741DFE544700F6E1F3 /* Constant.swift in Sources */,
@@ -418,7 +407,6 @@
 			files = (
 				5821181D1DFE49D200F6E1F3 /* NSData+Extensions.swift in Sources */,
 				5826E6FB1DFA5D2B00D93962 /* Tweetnacl.swift in Sources */,
-				5826E6D11DFA58BF00D93962 /* randombytes_deterministic.c in Sources */,
 				5826E6D31DFA58BF00D93962 /* tweetnacl.c in Sources */,
 				5826E6FD1DFA6A6C00D93962 /* Constant.swift in Sources */,
 			);

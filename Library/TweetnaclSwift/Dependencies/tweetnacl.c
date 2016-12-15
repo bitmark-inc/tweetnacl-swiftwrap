@@ -7,7 +7,6 @@ typedef unsigned long u32;
 typedef unsigned long long u64;
 typedef long long i64;
 typedef i64 gf[16];
-extern void randombytes(u8 *,u64);
 
 static const u8
   _0[16],
@@ -447,11 +446,11 @@ int crypto_scalarmult_base(u8 *q,const u8 *n)
   return crypto_scalarmult(q,n,_9);
 }
 
-int crypto_box_keypair(u8 *y,u8 *x)
-{
-  randombytes(x,32);
-  return crypto_scalarmult_base(y,x);
-}
+//int crypto_box_keypair(u8 *y,u8 *x)
+//{
+//  randombytes(x,32);
+//  return crypto_scalarmult_base(y,x);
+//}
 
 int crypto_box_beforenm(u8 *k,const u8 *y,const u8 *x)
 {
@@ -659,7 +658,6 @@ int crypto_sign_keypair(u8 *pk, u8 *sk)
   gf p[4];
   int i;
 
-  randombytes(sk, 32);
   crypto_hash(d, sk, 32);
   d[0] &= 248;
   d[31] &= 127;

@@ -93,14 +93,14 @@ fileprivate class NaclWrapper {
         case creationFailed
     }
     
-    fileprivate static func crypto_box_keypair(pk: inout NSMutableData, sk: inout NSMutableData) throws {
+    fileprivate static func crypto_box_keypair(pk: inout NSMutableData, sk: inout NSMutableData) throws -> Int32 {
         let result = SecRandomCopyBytes(kSecRandomDefault, sk.length, sk.mutableBytesPtr())
         
         if result != 0 {
             throw(NaclWrapperError.creationFailed)
         }
         
-        _ = CTweetNacl.crypto_scalarmult_curve25519_tweet_base(pk.mutableBytesPtr(), sk.bytesPtr())
+        return CTweetNacl.crypto_scalarmult_curve25519_tweet_base(pk.mutableBytesPtr(), sk.bytesPtr())
     }
     
     fileprivate static func crypto_sign_keypair_wrap(pk: inout NSMutableData, sk: inout NSMutableData) throws {
@@ -244,14 +244,14 @@ public class NaclBox {
     }
     
     public static func keyPair() throws -> (publicKey: NSData, secretKey: NSData) {
-        guard let pk = NSMutableData(length: crypto_box_PUBLICKEYBYTES) else {
+        guard var pk = NSMutableData(length: crypto_box_PUBLICKEYBYTES) else {
             throw(NaclBoxError.internalError)
         }
-        guard let sk = NSMutableData(length: crypto_box_SECRETKEYBYTES) else {
+        guard var sk = NSMutableData(length: crypto_box_SECRETKEYBYTES) else {
             throw(NaclBoxError.internalError)
         }
         
-        let r = CTweetNacl.crypto_box_curve25519xsalsa20poly1305_tweet_keypair(pk.mutableBytesPtr(), sk.mutableBytesPtr())
+        let r = try NaclWrapper.crypto_box_keypair(pk: &pk, sk: &sk)
         
         if r != 0 {
             throw(NaclBoxError.creationFailed)
@@ -386,8 +386,13 @@ public class NaclSign {
                 throw(NaclSignError.internalError)
             }
             
-            let seedPtr = seed.bytes
-            var sk = NSMutableData(bytes: seedPtr, length: seed.length)
+            var skValues = [UInt8](repeating:0, count:crypto_sign_SECRETKEYBYTES)
+            let seedByte = [UInt8](seed as Data)
+            for index in 0..<crypto_sign_SEEDBYTES {
+                skValues[index] = seedByte[index]
+            }
+            
+            var sk = NSMutableData(bytes: &skValues, length: crypto_sign_SECRETKEYBYTES)
             
             try NaclWrapper.crypto_sign_keypair_seeded(pk: &pk, sk: &sk)
             

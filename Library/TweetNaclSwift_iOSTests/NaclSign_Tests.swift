@@ -69,23 +69,23 @@ class NaclSign_Test: XCTestCase {
         }
     }
     
-//    func testSignFromSeed() {
-//        do {
-//            let seed = try NaclUtil.randomBytes(crypto_sign_SEEDBYTES)
-//            let k1 = try NaclSign.KeyPair.keyPair(fromSeed: seed)
-//            let k2 = try NaclSign.KeyPair.keyPair(fromSeed: seed)
-//            
-//            XCTAssertEqual(k1.secretKey.length, crypto_box_SECRETKEYBYTES)
-//            XCTAssertEqual(k1.publicKey.length, crypto_box_PUBLICKEYBYTES)
-//            XCTAssertEqual(k2.secretKey.length, crypto_box_SECRETKEYBYTES)
-//            XCTAssertEqual(k2.publicKey.length, crypto_box_PUBLICKEYBYTES)
-//            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.secretKey), NaclUtil.encodeBase64(data: k2.secretKey))
-//            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.publicKey), NaclUtil.encodeBase64(data: k2.publicKey))
-//        }
-//        catch {
-//            XCTFail()
-//        }
-//    }
+    func testSignFromSeed() {
+        do {
+            let seed = try NaclUtil.randomBytes(crypto_sign_SEEDBYTES)
+            let k1 = try NaclSign.KeyPair.keyPair(fromSeed: seed)
+            let k2 = try NaclSign.KeyPair.keyPair(fromSeed: seed)
+            
+            XCTAssertEqual(k1.secretKey.length, crypto_sign_SECRETKEYBYTES)
+            XCTAssertEqual(k1.publicKey.length, crypto_sign_PUBLICKEYBYTES)
+            XCTAssertEqual(k2.secretKey.length, crypto_sign_SECRETKEYBYTES)
+            XCTAssertEqual(k2.publicKey.length, crypto_sign_PUBLICKEYBYTES)
+            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.secretKey), NaclUtil.encodeBase64(data: k2.secretKey))
+            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.publicKey), NaclUtil.encodeBase64(data: k2.publicKey))
+        }
+        catch {
+            XCTFail()
+        }
+    }
     
     func testDetachedAndVerify() {
         do {
