@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Library/TweetnaclSwift.xcodeproj">
+      location = "group:TweetnaclSwift.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/TweetNaclSwift_Example.xcodeproj">
+      location = "group:TweetNaclExample.playground">
    </FileRef>
 </Workspace>
