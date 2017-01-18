@@ -7,8 +7,8 @@
 //
 
 import XCTest
-import TweetNaclSwift_iOS
-@testable import TweetNaclSwift_iOS
+import TweetNaclSwift
+@testable import TweetNaclSwift
 
 class NaclSign_Test: XCTestCase {
     

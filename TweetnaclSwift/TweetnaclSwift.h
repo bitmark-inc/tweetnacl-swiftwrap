@@ -1,19 +1,19 @@
 //
-//  TweetnaclSwift.h
-//  TweetnaclSwift
+//  TweetNaclSwift.h
+//  TweetNaclSwift
 //
-//  Created by Anh Nguyen on 12/9/16.
-//  Copyright © 2016 Bitmark. All rights reserved.
+//  Created by Anh Nguyen on 1/19/17.
+//  Copyright © 2017 Bitmark. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <UIKit/UIKit.h>
 
-//! Project version number for TweetnaclSwift.
-FOUNDATION_EXPORT double TweetnaclSwiftVersionNumber;
+//! Project version number for TweetNaclSwift.
+FOUNDATION_EXPORT double TweetNaclSwiftVersionNumber;
 
-//! Project version string for TweetnaclSwift.
-FOUNDATION_EXPORT const unsigned char TweetnaclSwiftVersionString[];
+//! Project version string for TweetNaclSwift.
+FOUNDATION_EXPORT const unsigned char TweetNaclSwiftVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <TweetnaclSwift/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <TweetNaclSwift/PublicHeader.h>
 
 
