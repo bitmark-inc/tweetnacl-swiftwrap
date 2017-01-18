@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "TweetNaclSwift"
-  spec.version = "0.0.2"
+  spec.version = "0.0.3"
   spec.summary = "TweetNacl wrapper library written on Swift."
   spec.homepage = "https://github.com/bitmark-inc/tweetnacl-swiftwrap"
   spec.license = { type: 'MIT', file: 'LICENSE' }
