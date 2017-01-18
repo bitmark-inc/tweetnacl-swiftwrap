@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.source = { git: "https://github.com/bitmark-inc/tweetnacl-swiftwrap.git", tag: "v#{spec.version}", submodules: true }
   spec.source_files = "TweetnaclSwift/**/*.{h,swift}"
-  spec.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/TweetnaclSwift/Dependencies' }
+  spec.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/TweetNaclSwift/TweetnaclSwift/Dependencies' }
   spec.preserve_paths = 'TweetnaclSwift/Dependencies/module.map'
 
   spec.dependency "BigInt", "~> 2.1"
