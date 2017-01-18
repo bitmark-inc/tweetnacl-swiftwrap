@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58C37B481E2FF56C008C7033 /* Build configuration list for PBXProject "TweetNaclSwift" */;
+			buildConfigurationList = 58C37B481E2FF56C008C7033 /* Build configuration list for PBXProject "TweetnaclSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -322,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -369,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -448,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58C37B481E2FF56C008C7033 /* Build configuration list for PBXProject "TweetNaclSwift" */ = {
+		58C37B481E2FF56C008C7033 /* Build configuration list for PBXProject "TweetnaclSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58C37B601E2FF56C008C7033 /* Debug */,
@@ -464,6 +464,7 @@
 				58C37B641E2FF56C008C7033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58C37B651E2FF56C008C7033 /* Build configuration list for PBXNativeTarget "TweetNaclSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +473,7 @@
 				58C37B671E2FF56C008C7033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
