@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   spec.platform = :ios, "9.1"
   spec.requires_arc = true
   spec.source = { git: "https://github.com/bitmark-inc/tweetnacl-swiftwrap.git", tag: "v#{spec.version}", submodules: true }
-  spec.source_files = "TweetnaclSwift/**/*.{h,swift}"
+  spec.source_files = "TweetnaclSwift/**/*.{h,swift,c}"
   spec.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/TweetNaclSwift/TweetnaclSwift/Dependencies' }
   spec.preserve_paths = 'TweetnaclSwift/Dependencies/module.map'
 
