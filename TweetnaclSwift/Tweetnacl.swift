@@ -9,9 +9,9 @@
 import Foundation
 import CTweetNacl
 
-class NaclUtil {
+struct NaclUtil {
     
-    enum NaclUtilError: Error {
+    public enum NaclUtilError: Error {
         case badKeySize
         case badNonceSize
         case badPublicKeySize
@@ -19,384 +19,418 @@ class NaclUtil {
         case internalError
     }
     
-    static func checkLengths(key: NSData, nonce: NSData) throws {
-        if key.length != crypto_secretbox_KEYBYTES {
+    static func checkLengths(key: Data, nonce: Data) throws {
+        if key.count != crypto_secretbox_KEYBYTES {
             throw(NaclUtilError.badKeySize)
         }
         
-        if nonce.length != crypto_secretbox_NONCEBYTES {
+        if nonce.count != crypto_secretbox_NONCEBYTES {
             throw NaclUtilError.badNonceSize
         }
     }
     
-    static func checkBoxLength(publicKey: NSData, secretKey: NSData) throws {
-        if publicKey.length != crypto_box_PUBLICKEYBYTES {
+    static func checkBoxLength(publicKey: Data, secretKey: Data) throws {
+        if publicKey.count != crypto_box_PUBLICKEYBYTES {
             throw(NaclUtilError.badPublicKeySize)
         }
         
-        if secretKey.length != crypto_box_SECRETKEYBYTES {
+        if secretKey.count != crypto_box_SECRETKEYBYTES {
             throw(NaclUtilError.badSecretKeySize)
         }
     }
     
-    public static func randomBytes(_ length: Int) throws -> NSData {
-        guard let data = NSMutableData(length: length) else {
-            throw(NaclUtilError.internalError)
+    public static func randomBytes(length: Int) throws -> Data {
+        var data = Data(count: length)
+        let result = data.withUnsafeMutableBytes {
+            return SecRandomCopyBytes(kSecRandomDefault, length, $0)
         }
-        
-        let result = SecRandomCopyBytes(kSecRandomDefault, data.length, data.mutableBytesPtr())
-        
-        if result != 0 {
+        guard result == errSecSuccess else {
             throw(NaclUtilError.internalError)
         }
         
         return data
     }
     
-    public static func hash(message: NSData) throws -> NSData {
-        guard let hash = NSMutableData(length: crypto_hash_BYTES) else {
-            throw(NaclUtilError.internalError)
+    public static func hash(message: Data) throws -> Data {
+        var hash = Data(count: crypto_hash_BYTES)
+        let r = hash.withUnsafeMutableBytes { (hashPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return message.withUnsafeBytes({ (messagePointer: UnsafePointer<UInt8>) -> Int32 in
+                return CTweetNacl.crypto_hash_sha512_tweet(hashPointer, messagePointer, UInt64(message.count))
+            })
         }
         
-        _ = CTweetNacl.crypto_hash_sha512_tweet(hash.mutableBytesPtr(), message.bytesPtr(), UInt64(message.length))
+        if r != 0 {
+            throw(NaclUtilError.internalError)
+        }
         
         return hash
     }
     
-    public static func verify(x: NSData, y: NSData) throws -> Bool {
-        if x.length == 0 || y.length == 0 {
-            return false
+    public static func verify(x: Data, y: Data) throws -> Bool {
+        if x.count == 0 || y.count == 0 {
+            throw NaclUtilError.badKeySize
         }
         
-        if x.length != y.length {
-            return false
+        if x.count != y.count {
+            throw NaclUtilError.badKeySize
         }
         
-        let r = CTweetNacl.crypto_verify_32_tweet(x.bytesPtr(), y.bytesPtr())
+        let r = x.withUnsafeBytes { (xPointer: UnsafePointer<UInt8>) -> Int32 in
+            return y.withUnsafeBytes({ (yPointer: UnsafePointer<UInt8>) -> Int32 in
+                return CTweetNacl.crypto_verify_32_tweet(xPointer, yPointer)
+            })
+        }
         
         return r == 0
     }
     
-    public static func encodeBase64(data: NSData) -> String {
-        return data.base64EncodedString(options: [])
+    public static func encodeBase64(data: Data) -> String {
+        return data.base64EncodedString()
     }
     
-    public static func decodeBase64(string: String) -> NSData {
-        return NSData(base64Encoded: string, options: [])!
+    public static func decodeBase64(string: String) -> Data? {
+        return Data(base64Encoded: string)
     }
 }
 
-fileprivate class NaclWrapper {
-    enum NaclWrapperError: Error {
+fileprivate struct NaclWrapper {
+    public enum NaclWrapperError: Error {
         case invalidParameters
         case internalError
         case creationFailed
     }
     
-    fileprivate static func crypto_box_keypair(pk: inout NSMutableData, sk: inout NSMutableData) throws -> Int32 {
-        let result = SecRandomCopyBytes(kSecRandomDefault, sk.length, sk.mutableBytesPtr())
+    fileprivate static func crypto_box_keypair(secretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
+        var pk = Data(count: crypto_box_PUBLICKEYBYTES)
+        
+        let result = pk.withUnsafeMutableBytes({ (pkPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return sk.withUnsafeBytes({ (skPointer: UnsafePointer<UInt8>) -> Int32 in
+                return CTweetNacl.crypto_scalarmult_curve25519_tweet_base(pkPointer, skPointer)
+            })
+        })
         
         if result != 0 {
-            throw(NaclWrapperError.creationFailed)
-        }
-        
-        return CTweetNacl.crypto_scalarmult_curve25519_tweet_base(pk.mutableBytesPtr(), sk.bytesPtr())
-    }
-    
-    fileprivate static func crypto_sign_keypair_wrap(pk: inout NSMutableData, sk: inout NSMutableData) throws {
-        let result = SecRandomCopyBytes(kSecRandomDefault, sk.length, sk.mutableBytesPtr())
-        
-        if result != 0 {
-            throw(NaclWrapperError.creationFailed)
-        }
-        
-        _ = CTweetNacl.crypto_sign_ed25519_tweet_keypair(pk.mutableBytesPtr(), sk.mutableBytesPtr())
-    }
-    
-    fileprivate static func crypto_sign_keypair_seeded(pk: inout NSMutableData, sk: inout NSMutableData) throws {
-        _ = CTweetNacl.crypto_sign_ed25519_tweet_keypair(pk.mutableBytesPtr(), sk.mutableBytesPtr())
-    }
-}
-
-public class NaclSecretBox {
-    enum NaclSecretBoxError: Error {
-        case invalidParameters
-        case internalError
-        case creationFailed
-    }
-    
-    public static func secretBox(message: NSData, nonce: NSData, key: NSData) throws -> NSData {
-        try NaclUtil.checkLengths(key: key, nonce: nonce)
-        
-        guard let m = NSMutableData(length: crypto_secretbox_ZEROBYTES + message.length) else {
-            throw(NaclSecretBoxError.internalError)
-        }
-        
-        guard let c = NSMutableData(length: m.length) else {
-            throw(NaclSecretBoxError.internalError)
-        }
-        
-        m.replaceBytes(in: NSMakeRange(crypto_secretbox_ZEROBYTES, message.length), withBytes: message.bytes)
-        
-        _ = CTweetNacl.crypto_secretbox_xsalsa20poly1305_tweet(c.mutableBytesPtr(), m.bytesPtr(), UInt64(m.length), nonce.bytesPtr(), key.bytesPtr())
-        
-        return NSData(data: c.subdata(with: NSMakeRange(crypto_secretbox_BOXZEROBYTES, c.length - crypto_secretbox_BOXZEROBYTES)))
-    }
-    
-    public static func open(box: NSData, nonce: NSData, key: NSData) throws -> NSData {
-        try NaclUtil.checkLengths(key: key, nonce: nonce)
-        
-        // Fill data
-        var cValues = [UInt8](repeating:0, count:crypto_secretbox_BOXZEROBYTES + box.length)
-        let boxByte = [UInt8](box as Data)
-        for index in 0..<box.length {
-            cValues[index + crypto_secretbox_BOXZEROBYTES] = boxByte[index]
-        }
-        
-        let c = NSData(bytes: &cValues, length: crypto_secretbox_BOXZEROBYTES + box.length)
-        
-        guard let m = NSMutableData(length: c.length) else {
-            throw(NaclSecretBoxError.internalError)
-        }
-        
-        if c.length < 32 {
-            throw(NaclSecretBoxError.creationFailed)
-        }
-        
-        let r = CTweetNacl.crypto_secretbox_xsalsa20poly1305_tweet_open(m.mutableBytesPtr(), c.bytesPtr(), UInt64(c.length), nonce.bytesPtr(), key.bytesPtr())
-        
-        if r != 0 {
-            throw(NaclSecretBoxError.creationFailed)
-        }
-        
-        return NSData(data: m.subdata(with: NSMakeRange(crypto_secretbox_ZEROBYTES, c.length - crypto_secretbox_ZEROBYTES)))
-    }
-}
-
-public class NaclScalarMult {
-    enum NaclScalarMultError: Error {
-        case invalidParameters
-        case internalError
-        case creationFailed
-    }
-    
-    public static func scalarMult(n: NSData, p: NSData) throws -> NSData {
-        if n.length != crypto_scalarmult_SCALARBYTES {
-            throw(NaclScalarMultError.invalidParameters)
-        }
-        
-        if p.length != crypto_scalarmult_BYTES {
-            throw(NaclScalarMultError.invalidParameters)
-        }
-        
-        guard let q = NSMutableData(length: crypto_scalarmult_BYTES) else {
-            throw(NaclScalarMultError.internalError)
-        }
-        
-        _ = CTweetNacl.crypto_scalarmult_curve25519_tweet(q.mutableBytesPtr(), n.bytesPtr(), p.bytesPtr())
-        
-        return q
-    }
-    
-    public static func base(n: NSData) throws -> NSData {
-        if n.length != crypto_scalarmult_SCALARBYTES {
-            throw(NaclScalarMultError.invalidParameters)
-        }
-        
-        guard let q = NSMutableData(length: crypto_scalarmult_BYTES) else {
-            throw(NaclScalarMultError.internalError)
-        }
-        
-        _ = CTweetNacl.crypto_scalarmult_curve25519_tweet_base(q.mutableBytesPtr(), n.bytesPtr())
-        
-        return q
-    }
-}
-
-public class NaclBox {
-    
-    enum NaclBoxError: Error {
-        case invalidParameters
-        case internalError
-        case creationFailed
-    }
-    
-    public static func box(message: NSData, nonce: NSData, publicKey: NSData, secretKey: NSData) throws -> NSData {
-        let key = try before(publicKey: publicKey, secretKey: secretKey)
-        return try NaclSecretBox.secretBox(message: message, nonce: nonce, key: key)
-    }
-    
-    public static func before(publicKey: NSData, secretKey: NSData) throws -> NSData {
-        try NaclUtil.checkBoxLength(publicKey: publicKey, secretKey: secretKey)
-        
-        guard let k = NSMutableData(length: crypto_box_BEFORENMBYTES) else {
-            throw(NaclBoxError.internalError)
-        }
-        
-        _ = CTweetNacl.crypto_box_curve25519xsalsa20poly1305_tweet_beforenm(k.mutableBytesPtr(), publicKey.bytesPtr(), secretKey.bytesPtr())
-        
-        return k
-    }
-    
-    public static func open(message: NSData, nonce: NSData, publicKey: NSData, secretKey: NSData) throws -> NSData {
-        let k = try before(publicKey: publicKey, secretKey: secretKey)
-        return try NaclSecretBox.secretBox(message: message, nonce: nonce, key: k)
-    }
-    
-    public static func keyPair() throws -> (publicKey: NSData, secretKey: NSData) {
-        guard var pk = NSMutableData(length: crypto_box_PUBLICKEYBYTES) else {
-            throw(NaclBoxError.internalError)
-        }
-        guard var sk = NSMutableData(length: crypto_box_SECRETKEYBYTES) else {
-            throw(NaclBoxError.internalError)
-        }
-        
-        let r = try NaclWrapper.crypto_box_keypair(pk: &pk, sk: &sk)
-        
-        if r != 0 {
-            throw(NaclBoxError.creationFailed)
+            throw NaclWrapperError.internalError
         }
         
         return (pk, sk)
     }
     
-    public static func keyPair(fromSecretKey secretKey: NSData) throws -> (publicKey: NSData, secretKey: NSData) {
-        if secretKey.length != crypto_sign_SECRETKEYBYTES {
-            throw(NaclBoxError.invalidParameters)
-        }
+    fileprivate static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
+        let sk = try NaclUtil.randomBytes(length: crypto_box_SECRETKEYBYTES)
         
-        guard let pk = NSMutableData(length: crypto_box_PUBLICKEYBYTES) else {
-            throw(NaclBoxError.internalError)
-        }
+        return try crypto_sign_keypair_seeded(secretKey: sk)
+    }
+    
+    fileprivate static func crypto_sign_keypair_seeded(secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
+        var pk = Data(count: crypto_box_PUBLICKEYBYTES)
+        var sk = Data(count: crypto_sign_SECRETKEYBYTES)
+        sk.replaceSubrange(0..<crypto_box_PUBLICKEYBYTES, with: secretKey)
         
-        _ = CTweetNacl.crypto_scalarmult_curve25519_tweet_base(pk.mutableBytesPtr(), secretKey.bytesPtr())
+        let result = pk.withUnsafeMutableBytes({ (pkPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return sk.withUnsafeMutableBytes({ (skPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+                return CTweetNacl.crypto_sign_ed25519_tweet_keypair(pkPointer, skPointer)
+            })
+        })
+        
+        if result != 0 {
+            throw NaclWrapperError.internalError
+        }
         
         return (pk, secretKey)
     }
 }
 
-public class NaclSign {
-    
-    enum NaclSignError: Error {
+public struct NaclSecretBox {
+    public enum NaclSecretBoxError: Error {
         case invalidParameters
         case internalError
         case creationFailed
     }
     
-    public static func sign(message: NSData, secretKey: NSData) throws -> NSData {
-        if secretKey.length != crypto_sign_SECRETKEYBYTES {
+    public static func secretBox(message: Data, nonce: Data, key: Data) throws -> Data {
+        try NaclUtil.checkLengths(key: key, nonce: nonce)
+        
+        var m = Data(count: crypto_secretbox_ZEROBYTES + message.count)
+        m.replaceSubrange(crypto_secretbox_ZEROBYTES..<m.count, with: message)
+        
+        var c = Data(count: m.count)
+        
+        let result = c.withUnsafeMutableBytes { (cPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return m.withUnsafeBytes({ (mPointer: UnsafePointer<UInt8>) -> Int32 in
+                return nonce.withUnsafeBytes({ (noncePointer: UnsafePointer<UInt8>) -> Int32 in
+                    return key.withUnsafeBytes({ (keyPointer: UnsafePointer<UInt8>) -> Int32 in
+                        return CTweetNacl.crypto_secretbox_xsalsa20poly1305_tweet(cPointer, mPointer, UInt64(m.count), noncePointer, keyPointer)
+                    })
+                })
+            })
+        }
+        
+        if result != 0 {
+            throw NaclSecretBoxError.internalError
+        }
+        
+        return c.subdata(in: crypto_secretbox_BOXZEROBYTES..<c.count)
+    }
+    
+    public static func open(box: Data, nonce: Data, key: Data) throws -> Data {
+        try NaclUtil.checkLengths(key: key, nonce: nonce)
+        
+        // Fill data
+        var c = Data(count: crypto_secretbox_BOXZEROBYTES + box.count)
+        c.replaceSubrange(0..<crypto_secretbox_BOXZEROBYTES, with: box)
+        
+        var m = Data(count: c.count)
+        
+        let result = m.withUnsafeMutableBytes { (mPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return c.withUnsafeBytes({ (cPointer: UnsafePointer<UInt8>) -> Int32 in
+                return nonce.withUnsafeBytes({ (noncePointer: UnsafePointer<UInt8>) -> Int32 in
+                    return key.withUnsafeBytes({ (keyPointer: UnsafePointer<UInt8>) -> Int32 in
+                        return CTweetNacl.crypto_secretbox_xsalsa20poly1305_tweet_open(mPointer, cPointer, UInt64(c.count), noncePointer, keyPointer)
+                    })
+                })
+            })
+        }
+        
+        if result != 0 {
+            throw(NaclSecretBoxError.creationFailed)
+        }
+        
+        return m.subdata(in: crypto_secretbox_ZEROBYTES..<c.count)
+    }
+}
+
+public struct NaclScalarMult {
+    public enum NaclScalarMultError: Error {
+        case invalidParameters
+        case internalError
+        case creationFailed
+    }
+    
+    public static func scalarMult(n: Data, p: Data) throws -> Data {
+        if n.count != crypto_scalarmult_SCALARBYTES {
+            throw(NaclScalarMultError.invalidParameters)
+        }
+        
+        if p.count != crypto_scalarmult_BYTES {
+            throw(NaclScalarMultError.invalidParameters)
+        }
+        
+        var q = Data(count: crypto_scalarmult_BYTES)
+        
+        let result = q.withUnsafeMutableBytes { (qPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return n.withUnsafeBytes({ (nPointer: UnsafePointer<UInt8>) -> Int32 in
+                return p.withUnsafeBytes({ (pPointer: UnsafePointer<UInt8>) -> Int32 in
+                    return CTweetNacl.crypto_scalarmult_curve25519_tweet(qPointer, nPointer, pPointer)
+                })
+            })
+        }
+        
+        if result != 0 {
+            throw(NaclScalarMultError.creationFailed)
+        }
+        
+        return q
+    }
+    
+    public static func base(n: Data) throws -> Data {
+        if n.count != crypto_scalarmult_SCALARBYTES {
+            throw(NaclScalarMultError.invalidParameters)
+        }
+        
+        var q = Data(count: crypto_scalarmult_BYTES)
+        
+        let result = q.withUnsafeMutableBytes { (qPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return n.withUnsafeBytes({ (nPointer: UnsafePointer<UInt8>) -> Int32 in
+                return CTweetNacl.crypto_scalarmult_curve25519_tweet_base(qPointer, nPointer)
+            })
+        }
+        
+        if result != 0 {
+            throw(NaclScalarMultError.creationFailed)
+        }
+        
+        return q
+    }
+}
+
+public struct NaclBox {
+    
+    public enum NaclBoxError: Error {
+        case invalidParameters
+        case internalError
+        case creationFailed
+    }
+    
+    public static func box(message: Data, nonce: Data, publicKey: Data, secretKey: Data) throws -> Data {
+        let key = try before(publicKey: publicKey, secretKey: secretKey)
+        return try NaclSecretBox.secretBox(message: message, nonce: nonce, key: key)
+    }
+    
+    public static func before(publicKey: Data, secretKey: Data) throws -> Data {
+        try NaclUtil.checkBoxLength(publicKey: publicKey, secretKey: secretKey)
+        
+        var k = Data(count: crypto_box_BEFORENMBYTES)
+        
+        let result = k.withUnsafeMutableBytes { (kPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return publicKey.withUnsafeBytes({ (pkPointer: UnsafePointer<UInt8>) -> Int32 in
+                return secretKey.withUnsafeBytes({ (skPointer: UnsafePointer<UInt8>) -> Int32 in
+                    return CTweetNacl.crypto_box_curve25519xsalsa20poly1305_tweet_beforenm(kPointer, pkPointer, skPointer)
+                })
+            })
+        }
+        
+        if result != 0 {
+            throw(NaclBoxError.creationFailed)
+        }
+        
+        return k
+    }
+    
+    public static func open(message: Data, nonce: Data, publicKey: Data, secretKey: Data) throws -> Data {
+        let k = try before(publicKey: publicKey, secretKey: secretKey)
+        return try NaclSecretBox.secretBox(message: message, nonce: nonce, key: k)
+    }
+    
+    public static func keyPair() throws -> (publicKey: Data, secretKey: Data) {
+        let sk = try NaclUtil.randomBytes(length: crypto_box_SECRETKEYBYTES)
+
+        return try NaclWrapper.crypto_box_keypair(secretKey: sk)
+    }
+    
+    public static func keyPair(fromSecretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
+        if sk.count != crypto_sign_SECRETKEYBYTES {
+            throw(NaclBoxError.invalidParameters)
+        }
+        
+        return try NaclWrapper.crypto_box_keypair(secretKey: sk)
+    }
+}
+
+public struct NaclSign {
+    
+    public enum NaclSignError: Error {
+        case invalidParameters
+        case internalError
+        case creationFailed
+    }
+    
+    public static func sign(message: Data, secretKey: Data) throws -> Data {
+        if secretKey.count != crypto_sign_SECRETKEYBYTES {
             throw(NaclSignError.invalidParameters)
         }
         
-        guard let signedMessage = NSMutableData(length: crypto_sign_BYTES + message.length) else {
-            throw(NaclSignError.internalError)
+        var signedMessage = Data(count: crypto_sign_BYTES + message.count)
+        
+        let tmpLength = UnsafeMutablePointer<UInt64>.allocate(capacity: 1)
+        
+        let result = signedMessage.withUnsafeMutableBytes { (signedMessagePointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return message.withUnsafeBytes({ (messagePointer: UnsafePointer<UInt8>) -> Int32 in
+                return secretKey.withUnsafeBytes({ (secretKeyPointer: UnsafePointer<UInt8>) -> Int32 in
+                    return CTweetNacl.crypto_sign_ed25519_tweet(signedMessagePointer, tmpLength, messagePointer, UInt64(message.count), secretKeyPointer)
+                })
+            })
         }
         
-        let signedMessageLength = UnsafeMutablePointer<UInt64>.allocate(capacity: 1)
-        _ = CTweetNacl.crypto_sign_ed25519_tweet(signedMessage.mutableBytesPtr(), signedMessageLength, message.bytesPtr(), UInt64(message.length), secretKey.bytesPtr())
+        if result != 0 {
+            throw NaclSignError.internalError
+        }
         
         return signedMessage
     }
     
-    public static func signOpen(signedMessage: NSData, publicKey: NSData) throws -> NSData {
-        if publicKey.length != crypto_sign_PUBLICKEYBYTES {
+    public static func signOpen(signedMessage: Data, publicKey: Data) throws -> Data {
+        if publicKey.count != crypto_sign_PUBLICKEYBYTES {
             throw(NaclSignError.invalidParameters)
         }
         
-        guard let tmp = NSMutableData(length: signedMessage.length) else {
-            throw(NaclSignError.internalError)
+        var tmp = Data(count: signedMessage.count)
+        let tmpLength = UnsafeMutablePointer<UInt64>.allocate(capacity: 1)
+        
+        let result = tmp.withUnsafeMutableBytes { (tmpPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return signedMessage.withUnsafeBytes({ (signMessagePointer: UnsafePointer<UInt8>) -> Int32 in
+                return publicKey.withUnsafeBytes({ (publicKeyPointer: UnsafePointer<UInt8>) -> Int32 in
+                    return CTweetNacl.crypto_sign_ed25519_tweet_open(tmpPointer, tmpLength, signMessagePointer, UInt64(signedMessage.count), publicKeyPointer)
+                })
+            })
         }
         
-        let signedMessageLength = UnsafeMutablePointer<UInt64>.allocate(capacity: 1)
-        
-        let r = CTweetNacl.crypto_sign_ed25519_tweet_open(tmp.mutableBytesPtr(), signedMessageLength, signedMessage.bytesPtr(), UInt64(signedMessage.length), publicKey.bytesPtr())
-        
-        if r != 0 {
+        if result != 0 {
             throw(NaclSignError.creationFailed)
         }
         
         return tmp
     }
     
-    public static func signDetached(message: NSData, secretKey: NSData) throws -> NSData {
+    public static func signDetached(message: Data, secretKey: Data) throws -> Data {
         let signedMessage = try sign(message: message, secretKey: secretKey)
         
-        let sig = signedMessage.subdata(with: NSMakeRange(0, crypto_sign_BYTES))
+        let sig = signedMessage.subdata(in: 0..<crypto_sign_BYTES)
         
-        return sig as NSData
+        return sig as Data
     }
     
-    public static func signDetachedVerify(message: NSData, sig: NSData, publicKey: NSData) throws -> Bool {
-        if sig.length != crypto_sign_BYTES {
+    public static func signDetachedVerify(message: Data, sig: Data, publicKey: Data) throws -> Bool {
+        if sig.count != crypto_sign_BYTES {
             throw(NaclSignError.invalidParameters)
         }
         
-        if publicKey.length != crypto_sign_PUBLICKEYBYTES {
+        if publicKey.count != crypto_sign_PUBLICKEYBYTES {
             throw(NaclSignError.invalidParameters)
         }
         
-        let sm = NSMutableData()
+        var sm = Data()
         
-        guard let m = NSMutableData(length: crypto_sign_BYTES + message.length) else {
-            throw(NaclSignError.invalidParameters)
-        }
+        var m = Data(count: crypto_sign_BYTES + message.count)
         
-        sm.append(sig as Data)
-        sm.append(message as Data)
+        sm.append(sig )
+        sm.append(message)
         
         let tmpLength = UnsafeMutablePointer<UInt64>.allocate(capacity: 1)
         
-        let r =  CTweetNacl.crypto_sign_ed25519_tweet_open(m.mutableBytesPtr(), tmpLength, sm.bytesPtr(), UInt64(sm.length), publicKey.bytesPtr())
+        let result = m.withUnsafeMutableBytes { (mPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
+            return sm.withUnsafeBytes({ (smPointer: UnsafePointer<UInt8>) -> Int32 in
+                return publicKey.withUnsafeBytes({ (publicKeyPointer: UnsafePointer<UInt8>) -> Int32 in
+                    return CTweetNacl.crypto_sign_ed25519_tweet_open(mPointer, tmpLength, smPointer, UInt64(sm.count), publicKeyPointer)
+                })
+            })
+        }
         
-        return r == 0
+        return result == 0
     }
     
-    public class KeyPair {
-        public static func keyPair() throws -> (publicKey: NSData, secretKey: NSData) {
-            guard var pk = NSMutableData(length: crypto_sign_PUBLICKEYBYTES) else {
-                throw(NaclSignError.internalError)
-            }
-            
-            guard var sk = NSMutableData(length: crypto_sign_SECRETKEYBYTES) else {
-                throw(NaclSignError.internalError)
-            }
-            
-            try NaclWrapper.crypto_sign_keypair_wrap(pk: &pk, sk: &sk)
-        
-            return (pk, sk)
+    public struct KeyPair {
+        public static func keyPair() throws -> (publicKey: Data, secretKey: Data) {
+            return try NaclWrapper.crypto_sign_keypair()
         }
         
-        public static func keyPair(fromSecretKey secretKey: NSData) throws -> (publicKey: NSData, secretKey: NSData) {
-            if secretKey.length != crypto_sign_SECRETKEYBYTES {
+        public static func keyPair(fromSecretKey secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
+            if secretKey.count != crypto_sign_SECRETKEYBYTES {
                 throw(NaclSignError.invalidParameters)
             }
             
-            let data = secretKey.subdata(with: NSMakeRange(32, crypto_sign_PUBLICKEYBYTES))
-            let pk = NSMutableData(data: data)
+            let sk = secretKey.subdata(in: crypto_sign_PUBLICKEYBYTES..<crypto_sign_SECRETKEYBYTES)
+            let pk = secretKey.subdata(in: 0..<crypto_sign_PUBLICKEYBYTES)
             
-            return (pk, secretKey)
+            return (pk, sk)
         }
         
-        public static func keyPair(fromSeed seed: NSData) throws -> (publicKey: NSData, secretKey: NSData) {
-            if seed.length != crypto_sign_SEEDBYTES {
+        public static func keyPair(fromSeed seed: Data) throws -> (publicKey: Data, secretKey: Data) {
+            if seed.count != crypto_sign_SEEDBYTES {
                 throw(NaclSignError.invalidParameters)
             }
             
-            guard var pk = NSMutableData(length: crypto_sign_PUBLICKEYBYTES) else {
-                throw(NaclSignError.internalError)
-            }
+//            var pk = Data(count: crypto_sign_PUBLICKEYBYTES)
+//
+//            var skValues = [UInt8](repeating:0, count:crypto_sign_SECRETKEYBYTES)
+//            let seedByte = [UInt8](seed as Data)
+//            for index in 0..<crypto_sign_SEEDBYTES {
+//                skValues[index] = seedByte[index]
+//            }
+//
+//            var sk = Data(bytes: &skValues, length: )
             
-            var skValues = [UInt8](repeating:0, count:crypto_sign_SECRETKEYBYTES)
-            let seedByte = [UInt8](seed as Data)
-            for index in 0..<crypto_sign_SEEDBYTES {
-                skValues[index] = seedByte[index]
-            }
-            
-            var sk = NSMutableData(bytes: &skValues, length: crypto_sign_SECRETKEYBYTES)
-            
-            try NaclWrapper.crypto_sign_keypair_seeded(pk: &pk, sk: &sk)
-            
-            return (pk, sk)
+            return try NaclWrapper.crypto_sign_keypair_seeded(secretKey: seed)
         }
     }
 }

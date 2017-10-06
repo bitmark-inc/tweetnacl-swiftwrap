@@ -26,10 +26,10 @@ class NaclSecretbox_Tests: XCTestCase {
     }
     
     func testSecretBox() {
-        let key = NaclUtil.decodeBase64(string: data![0])
-        let nonce = NaclUtil.decodeBase64(string: data![1])
+        let key = NaclUtil.decodeBase64(string: data![0])!
+        let nonce = NaclUtil.decodeBase64(string: data![1])!
         let encodedMessage = data![2]
-        let msg = NaclUtil.decodeBase64(string: encodedMessage)
+        let msg = NaclUtil.decodeBase64(string: encodedMessage)!
         let goodBox = data![3]
         
         do {
@@ -47,7 +47,7 @@ class NaclSecretbox_Tests: XCTestCase {
         }
     }
     
-    override class func defaultTestSuite() -> XCTestSuite {
+    override class var defaultTestSuite: XCTestSuite {
         
         let testSuite = XCTestSuite(name: NSStringFromClass(self))
         
@@ -66,7 +66,7 @@ class NaclSecretbox_Tests: XCTestCase {
     
     private class func addTestsWithArray(array: [String], toTestSuite testSuite: XCTestSuite) {
         // Returns an array of NSInvocation, which are not available in Swift, but still seems to work.
-        let invocations = self.testInvocations()
+        let invocations = self.testInvocations
         for invocation in invocations {
             
             // We can't directly use the NSInvocation type in our source, but it appears

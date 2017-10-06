@@ -48,11 +48,11 @@ class NaclScalarMulti_Tests: XCTestCase {
     
     func testScalarMulti() {
         let pk1Dec = data![0]
-        let pk1 = NaclUtil.decodeBase64(string: pk1Dec)
-        let sk1 = NaclUtil.decodeBase64(string: data![1])
+        let pk1 = NaclUtil.decodeBase64(string: pk1Dec)!
+        let sk1 = NaclUtil.decodeBase64(string: data![1])!
         let pk2Dec = data![2]
-        let pk2 = NaclUtil.decodeBase64(string: pk2Dec)
-        let sk2 = NaclUtil.decodeBase64(string: data![3])
+        let pk2 = NaclUtil.decodeBase64(string: pk2Dec)!
+        let sk2 = NaclUtil.decodeBase64(string: data![3])!
         let out = data![4]
         
         do {
@@ -73,7 +73,7 @@ class NaclScalarMulti_Tests: XCTestCase {
         }
     }
     
-    override class func defaultTestSuite() -> XCTestSuite {
+    override class var defaultTestSuite: XCTestSuite {
         
         let testSuite = XCTestSuite(name: NSStringFromClass(self))
         
@@ -92,7 +92,7 @@ class NaclScalarMulti_Tests: XCTestCase {
     
     private class func addTestsWithArray(array: [String], toTestSuite testSuite: XCTestSuite) {
         // Returns an array of NSInvocation, which are not available in Swift, but still seems to work.
-        let invocations = self.testInvocations()
+        let invocations = self.testInvocations
         for invocation in invocations {
             
             // We can't directly use the NSInvocation type in our source, but it appears

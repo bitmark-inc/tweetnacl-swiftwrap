@@ -198,11 +198,12 @@
 				TargetAttributes = {
 					58C37B4D1E2FF56C008C7033 = {
 						CreatedOnToolsVersion = 8.2;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					58C37B561E2FF56C008C7033 = {
 						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -392,12 +393,13 @@
 				INFOPLIST_FILE = TweetNaclSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark..TweetNaclSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.tweetnacl.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/TweetNaclSwift/Dependencies";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -413,11 +415,12 @@
 				INFOPLIST_FILE = TweetNaclSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark..TweetNaclSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.tweetnacl.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/TweetNaclSwift/Dependencies";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -429,7 +432,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark..TweetNaclSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -441,7 +445,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark..TweetNaclSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

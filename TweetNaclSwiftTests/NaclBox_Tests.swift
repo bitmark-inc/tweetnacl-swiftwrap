@@ -12,7 +12,7 @@ import XCTest
 class NaclBox_Test: XCTestCase {
     
     public var data: Array<String>?
-    private let nonce = NSMutableData(length: crypto_box_NONCEBYTES)!
+    private var nonce = Data(count: crypto_box_NONCEBYTES)
     
     
     override func setUp() {
@@ -26,9 +26,9 @@ class NaclBox_Test: XCTestCase {
     }
     
     func testBox() {
-        let pk = NaclUtil.decodeBase64(string: data![0])
-        let sk = NaclUtil.decodeBase64(string: data![1])
-        let msg = NaclUtil.decodeBase64(string: data![2])
+        let pk = NaclUtil.decodeBase64(string: data![0])!
+        let sk = NaclUtil.decodeBase64(string: data![1])!
+        let msg = NaclUtil.decodeBase64(string: data![2])!
         let goodBox = data![3]
         
         do {
@@ -42,7 +42,7 @@ class NaclBox_Test: XCTestCase {
         }
     }
     
-    override class func defaultTestSuite() -> XCTestSuite {
+    override class var defaultTestSuite: XCTestSuite {
         
         let testSuite = XCTestSuite(name: NSStringFromClass(self))
         
@@ -61,7 +61,7 @@ class NaclBox_Test: XCTestCase {
     
     private class func addTestsWithArray(array: [String], toTestSuite testSuite: XCTestSuite) {
         // Returns an array of NSInvocation, which are not available in Swift, but still seems to work.
-        let invocations = self.testInvocations()
+        let invocations = self.testInvocations
         for invocation in invocations {
             
             // We can't directly use the NSInvocation type in our source, but it appears
