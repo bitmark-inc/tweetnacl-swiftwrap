@@ -117,15 +117,15 @@ fileprivate struct NaclWrapper {
     }
     
     fileprivate static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
-        let sk = try NaclUtil.randomBytes(length: crypto_box_SECRETKEYBYTES)
+        let sk = try NaclUtil.randomBytes(length: crypto_sign_SECRETKEYBYTES)
         
         return try crypto_sign_keypair_seeded(secretKey: sk)
     }
     
     fileprivate static func crypto_sign_keypair_seeded(secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
-        var pk = Data(count: crypto_box_PUBLICKEYBYTES)
+        var pk = Data(count: crypto_sign_PUBLICKEYBYTES)
         var sk = Data(count: crypto_sign_SECRETKEYBYTES)
-        sk.replaceSubrange(0..<crypto_box_PUBLICKEYBYTES, with: secretKey)
+        sk.replaceSubrange(0..<crypto_sign_PUBLICKEYBYTES, with: secretKey.subdata(in: 0..<crypto_sign_PUBLICKEYBYTES))
         
         let result = pk.withUnsafeMutableBytes({ (pkPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return sk.withUnsafeMutableBytes({ (skPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
@@ -137,7 +137,7 @@ fileprivate struct NaclWrapper {
             throw NaclWrapperError.internalError
         }
         
-        return (pk, secretKey)
+        return (pk, sk)
     }
 }
 
@@ -169,7 +169,6 @@ public struct NaclSecretBox {
         if result != 0 {
             throw NaclSecretBoxError.internalError
         }
-        
         return c.subdata(in: crypto_secretbox_BOXZEROBYTES..<c.count)
     }
     
@@ -178,7 +177,7 @@ public struct NaclSecretBox {
         
         // Fill data
         var c = Data(count: crypto_secretbox_BOXZEROBYTES + box.count)
-        c.replaceSubrange(0..<crypto_secretbox_BOXZEROBYTES, with: box)
+        c.replaceSubrange(crypto_secretbox_BOXZEROBYTES..<c.count, with: box)
         
         var m = Data(count: c.count)
         
@@ -409,26 +408,15 @@ public struct NaclSign {
                 throw(NaclSignError.invalidParameters)
             }
             
-            let sk = secretKey.subdata(in: crypto_sign_PUBLICKEYBYTES..<crypto_sign_SECRETKEYBYTES)
-            let pk = secretKey.subdata(in: 0..<crypto_sign_PUBLICKEYBYTES)
+            let pk = secretKey.subdata(in: crypto_sign_PUBLICKEYBYTES..<crypto_sign_SECRETKEYBYTES)
             
-            return (pk, sk)
+            return (pk, secretKey)
         }
         
         public static func keyPair(fromSeed seed: Data) throws -> (publicKey: Data, secretKey: Data) {
             if seed.count != crypto_sign_SEEDBYTES {
                 throw(NaclSignError.invalidParameters)
             }
-            
-//            var pk = Data(count: crypto_sign_PUBLICKEYBYTES)
-//
-//            var skValues = [UInt8](repeating:0, count:crypto_sign_SECRETKEYBYTES)
-//            let seedByte = [UInt8](seed as Data)
-//            for index in 0..<crypto_sign_SEEDBYTES {
-//                skValues[index] = seedByte[index]
-//            }
-//
-//            var sk = Data(bytes: &skValues, length: )
             
             return try NaclWrapper.crypto_sign_keypair_seeded(secretKey: seed)
         }

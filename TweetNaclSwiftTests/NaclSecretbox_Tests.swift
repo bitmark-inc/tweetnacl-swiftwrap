@@ -13,7 +13,7 @@ import XCTest
 
 class NaclSecretbox_Tests: XCTestCase {
     
-    public var data: Array<String>?
+    public var data: [String]?
     
     override func setUp() {
         super.setUp()
@@ -54,8 +54,8 @@ class NaclSecretbox_Tests: XCTestCase {
         let testBundle = Bundle(for: NaclSecretbox_Tests.self)
         let fileURL = testBundle.url(forResource: "SecretboxTestData", withExtension: "json")
         let fileData = try! Data(contentsOf: fileURL!)
-        let json = try! JSONSerialization.jsonObject(with: fileData, options: [])
-        let arrayOfData = json as! [Array<String>]
+        let jsonDecoder = JSONDecoder()
+        let arrayOfData = try! jsonDecoder.decode([[String]].self, from: fileData)
         
         for array in arrayOfData {
             addTestsWithArray(array: array, toTestSuite: testSuite)
