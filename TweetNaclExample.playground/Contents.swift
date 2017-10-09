@@ -1,6 +1,6 @@
 //: Playground - noun: a place where people can play
 
-import TweetNaclSwift_iOS
+import TweetNaclSwift
 
 do {
     let keyPair = try NaclSign.KeyPair.keyPair()
