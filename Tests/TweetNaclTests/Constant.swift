@@ -6,8 +6,6 @@
 //  Copyright © 2016 Bitmark. All rights reserved.
 //
 
-import Foundation
-
 let crypto_secretbox_KEYBYTES = 32
 let crypto_secretbox_NONCEBYTES = 24
 let crypto_secretbox_ZEROBYTES = 32

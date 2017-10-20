@@ -1,1 +1,1 @@
-# tweetnacl-swiftwrap
+# TweetNacl

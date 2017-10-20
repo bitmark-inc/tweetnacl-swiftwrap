@@ -7,8 +7,7 @@
 //
 
 import XCTest
-import TweetNaclSwift
-@testable import TweetNaclSwift
+@testable import TweetNacl
 
 class NaclSign_Test: XCTestCase {
     
@@ -35,7 +34,7 @@ class NaclSign_Test: XCTestCase {
         catch {
             XCTFail()
         }
-
+        
     }
     
     func testKeyPairFromSecret() {
