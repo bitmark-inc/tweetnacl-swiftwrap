@@ -8,6 +8,7 @@ before_install:
   - gem install xcpretty
 
 script:
+- swift build
 - xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-macOS test | xcpretty
 - xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-iOS test | xcpretty
 - xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-watchOS test | xcpretty

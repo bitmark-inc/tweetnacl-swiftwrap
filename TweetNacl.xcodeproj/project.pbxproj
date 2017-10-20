@@ -8,18 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		52D6D9871BEFF229002C0205 /* TweetNacl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* TweetNacl.framework */; };
-		58B0C09B1F99D13B00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0981F99D13B00B49C81 /* tweetnacl.h */; };
-		58B0C09C1F99D13B00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0981F99D13B00B49C81 /* tweetnacl.h */; };
-		58B0C09D1F99D13B00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0981F99D13B00B49C81 /* tweetnacl.h */; };
-		58B0C09E1F99D13B00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0981F99D13B00B49C81 /* tweetnacl.h */; };
-		58B0C09F1F99D13B00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C09A1F99D13B00B49C81 /* tweetnacl.c */; };
-		58B0C0A01F99D13B00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C09A1F99D13B00B49C81 /* tweetnacl.c */; };
-		58B0C0A11F99D13B00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C09A1F99D13B00B49C81 /* tweetnacl.c */; };
-		58B0C0A21F99D13B00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C09A1F99D13B00B49C81 /* tweetnacl.c */; };
-		58B0C0A91F99D52400B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0A81F99D51600B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0AA1F99D52800B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0A81F99D51600B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0AB1F99D52800B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0A81F99D51600B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0AC1F99D52900B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0A81F99D51600B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5816A3211F99F27300F580B2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5816A3201F99F27300F580B2 /* Constant.swift */; };
+		5816A3221F99F27300F580B2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5816A3201F99F27300F580B2 /* Constant.swift */; };
+		5816A3231F99F27300F580B2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5816A3201F99F27300F580B2 /* Constant.swift */; };
+		5816A3241F99F27300F580B2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5816A3201F99F27300F580B2 /* Constant.swift */; };
 		58B0C0B51F99D78C00B49C81 /* BoxTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 58B0C0AD1F99D78B00B49C81 /* BoxTestData.json */; };
 		58B0C0B61F99D78C00B49C81 /* BoxTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 58B0C0AD1F99D78B00B49C81 /* BoxTestData.json */; };
 		58B0C0B71F99D78C00B49C81 /* BoxTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 58B0C0AD1F99D78B00B49C81 /* BoxTestData.json */; };
@@ -44,13 +36,22 @@
 		58B0C0CA1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */; };
 		58B0C0CB1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */; };
 		58B0C0CC1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */; };
-		58B0C0CE1F99D84700B49C81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0CD1F99D84700B49C81 /* Constant.swift */; };
-		58B0C0CF1F99D84700B49C81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0CD1F99D84700B49C81 /* Constant.swift */; };
-		58B0C0D01F99D84700B49C81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0CD1F99D84700B49C81 /* Constant.swift */; };
-		8933C7851EB5B820000D00A4 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* TweetNacl.swift */; };
-		8933C7861EB5B820000D00A4 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* TweetNacl.swift */; };
-		8933C7871EB5B820000D00A4 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* TweetNacl.swift */; };
-		8933C7881EB5B820000D00A4 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* TweetNacl.swift */; };
+		58B0C0D41F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
+		58B0C0D51F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
+		58B0C0D61F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
+		58B0C0D71F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
+		58B0C0D81F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
+		58B0C0D91F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
+		58B0C0DA1F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
+		58B0C0DB1F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
+		58B0C0E11F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0E21F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0E31F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0E41F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0E51F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
+		58B0C0E61F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
+		58B0C0E71F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
+		58B0C0E81F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
 		DD7502881C68FEDE006590AF /* TweetNacl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* TweetNacl.framework */; };
 		DD7502921C690C7A006590AF /* TweetNacl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* TweetNacl.framework */; };
 /* End PBXBuildFile section */
@@ -85,10 +86,7 @@
 		52D6D9E21BEFFF6E002C0205 /* TweetNacl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweetNacl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* TweetNacl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweetNacl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* TweetNacl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweetNacl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		58B0C0981F99D13B00B49C81 /* tweetnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetnacl.h; sourceTree = "<group>"; };
-		58B0C0991F99D13B00B49C81 /* module.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
-		58B0C09A1F99D13B00B49C81 /* tweetnacl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tweetnacl.c; sourceTree = "<group>"; };
-		58B0C0A81F99D51600B49C81 /* TweetNacl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetNacl.h; sourceTree = "<group>"; };
+		5816A3201F99F27300F580B2 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		58B0C0AD1F99D78B00B49C81 /* BoxTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BoxTestData.json; sourceTree = "<group>"; };
 		58B0C0AE1F99D78B00B49C81 /* NaclBox_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclBox_Tests.swift; sourceTree = "<group>"; };
 		58B0C0AF1F99D78B00B49C81 /* NaclSecretbox_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclSecretbox_Tests.swift; sourceTree = "<group>"; };
@@ -97,8 +95,11 @@
 		58B0C0B21F99D78B00B49C81 /* ScalarMultiTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScalarMultiTestData.json; sourceTree = "<group>"; };
 		58B0C0B31F99D78B00B49C81 /* SecretboxTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SecretboxTestData.json; sourceTree = "<group>"; };
 		58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclSign_Tests.swift; sourceTree = "<group>"; };
-		58B0C0CD1F99D84700B49C81 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		8933C7841EB5B820000D00A4 /* TweetNacl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetNacl.swift; sourceTree = "<group>"; };
+		58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetNacl.h; sourceTree = "<group>"; };
+		58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetNacl.swift; sourceTree = "<group>"; };
+		58B0C0DC1F99EF0D00B49C81 /* module.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
+		58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetnacl.h; sourceTree = "<group>"; };
+		58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tweetnacl.c; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* TweetNacl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TweetNacl.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* TweetNaclTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TweetNaclTests.plist; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* TweetNacl-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TweetNacl-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,22 +195,39 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		58B0C0971F99D13B00B49C81 /* CTweetNacl */ = {
+		58B0C0D11F99EBCA00B49C81 /* TweetNacl */ = {
 			isa = PBXGroup;
 			children = (
-				58B0C0981F99D13B00B49C81 /* tweetnacl.h */,
-				58B0C0991F99D13B00B49C81 /* module.map */,
-				58B0C09A1F99D13B00B49C81 /* tweetnacl.c */,
+				5816A3201F99F27300F580B2 /* Constant.swift */,
+				58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */,
+				58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */,
+			);
+			path = TweetNacl;
+			sourceTree = "<group>";
+		};
+		58B0C0DD1F99EF0D00B49C81 /* CTweetNacl */ = {
+			isa = PBXGroup;
+			children = (
+				58B0C0DE1F99EF0D00B49C81 /* include */,
+				58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */,
 			);
 			path = CTweetNacl;
+			sourceTree = "<group>";
+		};
+		58B0C0DE1F99EF0D00B49C81 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				58B0C0971F99D13B00B49C81 /* CTweetNacl */,
-				8933C7841EB5B820000D00A4 /* TweetNacl.swift */,
-				58B0C0A81F99D51600B49C81 /* TweetNacl.h */,
+				58B0C0DD1F99EF0D00B49C81 /* CTweetNacl */,
+				58B0C0DC1F99EF0D00B49C81 /* module.map */,
+				58B0C0D11F99EBCA00B49C81 /* TweetNacl */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -217,7 +235,6 @@
 		8933C7831EB5B7EB000D00A4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				58B0C0CD1F99D84700B49C81 /* Constant.swift */,
 				58B0C0AE1F99D78B00B49C81 /* NaclBox_Tests.swift */,
 				58B0C0B11F99D78B00B49C81 /* NaclScalarMulti_Tests.swift */,
 				58B0C0AF1F99D78B00B49C81 /* NaclSecretbox_Tests.swift */,
@@ -254,8 +271,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0A91F99D52400B49C81 /* TweetNacl.h in Headers */,
-				58B0C09B1F99D13B00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E11F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0D41F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +280,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0AB1F99D52800B49C81 /* TweetNacl.h in Headers */,
-				58B0C09D1F99D13B00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E31F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0D61F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +289,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0AC1F99D52900B49C81 /* TweetNacl.h in Headers */,
-				58B0C09E1F99D13B00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E41F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0D71F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,8 +298,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0AA1F99D52800B49C81 /* TweetNacl.h in Headers */,
-				58B0C09C1F99D13B00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E21F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0D51F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,8 +564,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7851EB5B820000D00A4 /* TweetNacl.swift in Sources */,
-				58B0C09F1F99D13B00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0D81F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
+				58B0C0E51F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				5816A3211F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +576,6 @@
 			files = (
 				58B0C0CA1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */,
 				58B0C0C11F99D78C00B49C81 /* NaclScalarMulti_Tests.swift in Sources */,
-				58B0C0CE1F99D84700B49C81 /* Constant.swift in Sources */,
 				58B0C0B81F99D78C00B49C81 /* NaclBox_Tests.swift in Sources */,
 				58B0C0BB1F99D78C00B49C81 /* NaclSecretbox_Tests.swift in Sources */,
 			);
@@ -568,8 +585,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7871EB5B820000D00A4 /* TweetNacl.swift in Sources */,
-				58B0C0A11F99D13B00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0DA1F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
+				58B0C0E71F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				5816A3231F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,8 +595,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7881EB5B820000D00A4 /* TweetNacl.swift in Sources */,
-				58B0C0A21F99D13B00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0DB1F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
+				58B0C0E81F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				5816A3241F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,8 +605,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7861EB5B820000D00A4 /* TweetNacl.swift in Sources */,
-				58B0C0A01F99D13B00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0D91F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
+				58B0C0E61F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				5816A3221F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +617,6 @@
 			files = (
 				58B0C0CB1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */,
 				58B0C0C21F99D78C00B49C81 /* NaclScalarMulti_Tests.swift in Sources */,
-				58B0C0CF1F99D84700B49C81 /* Constant.swift in Sources */,
 				58B0C0B91F99D78C00B49C81 /* NaclBox_Tests.swift in Sources */,
 				58B0C0BC1F99D78C00B49C81 /* NaclSecretbox_Tests.swift in Sources */,
 			);
@@ -609,7 +628,6 @@
 			files = (
 				58B0C0CC1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */,
 				58B0C0C31F99D78C00B49C81 /* NaclScalarMulti_Tests.swift in Sources */,
-				58B0C0D01F99D84700B49C81 /* Constant.swift in Sources */,
 				58B0C0BA1F99D78C00B49C81 /* NaclBox_Tests.swift in Sources */,
 				58B0C0BD1F99D78C00B49C81 /* NaclSecretbox_Tests.swift in Sources */,
 			);
@@ -680,9 +698,9 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Sources/CTweetNacl";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Sources";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -726,8 +744,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Sources/CTweetNacl";
-				SWIFT_VERSION = 3.0;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Sources";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -785,6 +803,7 @@
 		52D6D9941BEFF229002C0205 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Configs/TweetNaclTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -799,6 +818,7 @@
 		52D6D9951BEFF229002C0205 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Configs/TweetNaclTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -826,7 +846,7 @@
 				PRODUCT_NAME = TweetNacl;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -849,7 +869,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -871,7 +891,7 @@
 				PRODUCT_NAME = TweetNacl;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -894,7 +914,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -919,7 +939,7 @@
 				PRODUCT_NAME = TweetNacl;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -943,13 +963,14 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		DD7502831C68FCFC006590AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -960,13 +981,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		DD7502841C68FCFC006590AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -977,13 +999,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		DD7502961C690C7A006590AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Configs/TweetNaclTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -991,7 +1014,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -999,6 +1022,7 @@
 		DD7502971C690C7A006590AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Configs/TweetNaclTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1006,7 +1030,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
