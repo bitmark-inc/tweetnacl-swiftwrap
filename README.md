@@ -121,8 +121,8 @@ Generates a new random key pair for box and returns it as an object with
 `publicKey` and `secretKey` members:
 
     {
-       publicKey: ...,  // [Data](https://developer.apple.com/documentation/foundation/data) with 32-byte public key
-       secretKey: ...   // [Data](https://developer.apple.com/documentation/foundation/data) with 32-byte secret key
+       publicKey: ...,  // Data with 32-byte public key
+       secretKey: ...   // Data with 32-byte secret key
     }
 
 
@@ -240,8 +240,8 @@ Generates new random key pair for signing and returns it as an object with
 `publicKey` and `secretKey` members:
 
     {
-       publicKey: ...,  // [Data](https://developer.apple.com/documentation/foundation/data) with 32-byte public key
-       secretKey: ...   // [Data](https://developer.apple.com/documentation/foundation/data) with 64-byte secret key
+       publicKey: ...,  // Data with 32-byte public key
+       secretKey: ...   // Data with 64-byte secret key
     }
 
 #### NaclSign.keyPair.fromSecretKey(secretKey)
