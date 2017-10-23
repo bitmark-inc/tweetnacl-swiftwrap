@@ -17,7 +17,7 @@
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1+ is required to build TweetNacl 4.0+.
+> CocoaPods 1.1+ is required to build TweetNacl 1.0+.
 
 To integrate TweetNacl into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
