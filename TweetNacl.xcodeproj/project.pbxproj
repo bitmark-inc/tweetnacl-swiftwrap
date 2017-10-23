@@ -36,22 +36,22 @@
 		58B0C0CA1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */; };
 		58B0C0CB1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */; };
 		58B0C0CC1F99D78C00B49C81 /* NaclSign_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0B41F99D78C00B49C81 /* NaclSign_Tests.swift */; };
-		58B0C0D41F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
-		58B0C0D51F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
-		58B0C0D61F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
-		58B0C0D71F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; };
+		58B0C0D41F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0D51F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0D61F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58B0C0D71F99EBCA00B49C81 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58B0C0D81F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
 		58B0C0D91F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
 		58B0C0DA1F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
 		58B0C0DB1F99EBCA00B49C81 /* TweetNacl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */; };
-		58B0C0E11F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0E21F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0E31F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0E41F99EF0D00B49C81 /* tweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58B0C0E51F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
-		58B0C0E61F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
-		58B0C0E71F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
-		58B0C0E81F99EF0D00B49C81 /* tweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */; };
+		58B0C0E11F99EF0D00B49C81 /* ctweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* ctweetnacl.h */; };
+		58B0C0E21F99EF0D00B49C81 /* ctweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* ctweetnacl.h */; };
+		58B0C0E31F99EF0D00B49C81 /* ctweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* ctweetnacl.h */; };
+		58B0C0E41F99EF0D00B49C81 /* ctweetnacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B0C0DF1F99EF0D00B49C81 /* ctweetnacl.h */; };
+		58B0C0E51F99EF0D00B49C81 /* ctweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* ctweetnacl.c */; };
+		58B0C0E61F99EF0D00B49C81 /* ctweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* ctweetnacl.c */; };
+		58B0C0E71F99EF0D00B49C81 /* ctweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* ctweetnacl.c */; };
+		58B0C0E81F99EF0D00B49C81 /* ctweetnacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 58B0C0E01F99EF0D00B49C81 /* ctweetnacl.c */; };
 		DD7502881C68FEDE006590AF /* TweetNacl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* TweetNacl.framework */; };
 		DD7502921C690C7A006590AF /* TweetNacl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* TweetNacl.framework */; };
 /* End PBXBuildFile section */
@@ -98,8 +98,8 @@
 		58B0C0D21F99EBCA00B49C81 /* TweetNacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetNacl.h; sourceTree = "<group>"; };
 		58B0C0D31F99EBCA00B49C81 /* TweetNacl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetNacl.swift; sourceTree = "<group>"; };
 		58B0C0DC1F99EF0D00B49C81 /* module.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
-		58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetnacl.h; sourceTree = "<group>"; };
-		58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tweetnacl.c; sourceTree = "<group>"; };
+		58B0C0DF1F99EF0D00B49C81 /* ctweetnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctweetnacl.h; sourceTree = "<group>"; };
+		58B0C0E01F99EF0D00B49C81 /* ctweetnacl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctweetnacl.c; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* TweetNacl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TweetNacl.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* TweetNaclTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TweetNaclTests.plist; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* TweetNacl-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TweetNacl-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				58B0C0DE1F99EF0D00B49C81 /* include */,
-				58B0C0E01F99EF0D00B49C81 /* tweetnacl.c */,
+				58B0C0E01F99EF0D00B49C81 /* ctweetnacl.c */,
 			);
 			path = CTweetNacl;
 			sourceTree = "<group>";
@@ -217,7 +217,7 @@
 		58B0C0DE1F99EF0D00B49C81 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				58B0C0DF1F99EF0D00B49C81 /* tweetnacl.h */,
+				58B0C0DF1F99EF0D00B49C81 /* ctweetnacl.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0E11F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E11F99EF0D00B49C81 /* ctweetnacl.h in Headers */,
 				58B0C0D41F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +280,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0E31F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E31F99EF0D00B49C81 /* ctweetnacl.h in Headers */,
 				58B0C0D61F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +289,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0E41F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E41F99EF0D00B49C81 /* ctweetnacl.h in Headers */,
 				58B0C0D71F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,7 +298,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B0C0E21F99EF0D00B49C81 /* tweetnacl.h in Headers */,
+				58B0C0E21F99EF0D00B49C81 /* ctweetnacl.h in Headers */,
 				58B0C0D51F99EBCA00B49C81 /* TweetNacl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,7 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B0C0D81F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
-				58B0C0E51F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0E51F99EF0D00B49C81 /* ctweetnacl.c in Sources */,
 				5816A3211F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,7 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B0C0DA1F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
-				58B0C0E71F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0E71F99EF0D00B49C81 /* ctweetnacl.c in Sources */,
 				5816A3231F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,7 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B0C0DB1F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
-				58B0C0E81F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0E81F99EF0D00B49C81 /* ctweetnacl.c in Sources */,
 				5816A3241F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,7 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B0C0D91F99EBCA00B49C81 /* TweetNacl.swift in Sources */,
-				58B0C0E61F99EF0D00B49C81 /* tweetnacl.c in Sources */,
+				58B0C0E61F99EF0D00B49C81 /* ctweetnacl.c in Sources */,
 				5816A3221F99F27300F580B2 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
