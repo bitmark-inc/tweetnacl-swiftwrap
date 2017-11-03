@@ -34,8 +34,10 @@ class NaclBox_Test: XCTestCase {
         do {
             let box = try NaclBox.box(message: msg, nonce: nonce, publicKey: pk, secretKey: sk)
             let boxEncoded = NaclUtil.encodeBase64(data: box)
+            let open = try NaclBox.open(message: box, nonce: nonce, publicKey: pk, secretKey: sk)
             
             XCTAssertEqual(boxEncoded, goodBox)
+            XCTAssertEqual(open, msg)
         }
         catch {
             XCTFail()

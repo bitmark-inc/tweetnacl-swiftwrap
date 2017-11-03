@@ -288,7 +288,7 @@ public struct NaclBox {
     
     public static func open(message: Data, nonce: Data, publicKey: Data, secretKey: Data) throws -> Data {
         let k = try before(publicKey: publicKey, secretKey: secretKey)
-        return try NaclSecretBox.secretBox(message: message, nonce: nonce, key: k)
+        return try NaclSecretBox.open(box: message, nonce: nonce, key: k)
     }
     
     public static func keyPair() throws -> (publicKey: Data, secretKey: Data) {
