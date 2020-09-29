@@ -4,9 +4,9 @@
 [![Build Status](https://travis-ci.org/bitmark-inc/tweetnacl-swiftwrap.svg?branch=master)](https://travis-ci.org/bitmark-inc/tweetnacl-swiftwrap) [![codecov](https://codecov.io/gh/bitmark-inc/tweetnacl-swiftwrap/branch/master/graph/badge.svg)](https://codecov.io/gh/bitmark-inc/tweetnacl-swiftwrap)
 
 ## Requirements
-- iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 9.0+
-- Swift 4.0+
+- iOS 9.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 12.0+
+- Swift 5.0+
 
 ## Installation
 
