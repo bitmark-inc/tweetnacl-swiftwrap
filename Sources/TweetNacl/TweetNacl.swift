@@ -298,7 +298,7 @@ public struct NaclBox {
     }
     
     public static func keyPair(fromSecretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
-        if sk.count != crypto_sign_SECRETKEYBYTES {
+        if sk.count != crypto_box_SECRETKEYBYTES {
             throw(NaclBoxError.invalidParameters)
         }
         
