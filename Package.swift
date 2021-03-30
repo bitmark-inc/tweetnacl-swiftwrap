@@ -1,10 +1,16 @@
 // swift-tools-version:4.0
 import PackageDescription
 
-let package = Package(name: "TweetNacl", products: [.library(name: "TweetNacl", targets: ["TweetNacl"])],
-            targets: [
-                .target(name: "CTweetNacl"),
-                .target(name: "TweetNacl", dependencies: ["CTweetNacl"]),
-                .testTarget(name: "TweetNaclTests", dependencies: ["TweetNacl"]),
-            ],
-            swiftLanguageVersions: [4])
+let package = Package(
+  name: "TweetNacl",
+  products: [
+     .library(name: "TweetNacl", targets: ["TweetNacl"]),
+     .library(name: "TweetNacl-Dynamic", type: .dynamic, targets: ["TweetNacl"]),
+  ],
+  targets: [
+    .target(name: "CTweetNacl"),
+    .target(name: "TweetNacl", dependencies: ["CTweetNacl"]),
+    .testTarget(name: "TweetNaclTests", dependencies: ["TweetNacl"]),
+  ],
+  swiftLanguageVersions: [4]
+)
