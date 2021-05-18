@@ -21,7 +21,7 @@ struct NaclUtil {
     
     static func checkLengths(key: Data, nonce: Data) throws {
         if key.count != Constants.Secretbox.keyBytes {
-            throw(NaclUtilError.badKeySize)
+            throw NaclUtilError.badKeySize
         }
         
         if nonce.count != Constants.Secretbox.nonceBytes {
@@ -31,11 +31,11 @@ struct NaclUtil {
     
     static func checkBoxLength(publicKey: Data, secretKey: Data) throws {
         if publicKey.count != Constants.Box.publicKeyBytes {
-            throw(NaclUtilError.badPublicKeySize)
+            throw NaclUtilError.badPublicKeySize
         }
         
         if secretKey.count != Constants.Box.secretKeyBytes{
-            throw(NaclUtilError.badSecretKeySize)
+            throw NaclUtilError.badSecretKeySize
         }
     }
     
@@ -45,7 +45,7 @@ struct NaclUtil {
             return SecRandomCopyBytes(kSecRandomDefault, length, $0)
         }
         guard result == errSecSuccess else {
-            throw(NaclUtilError.internalError)
+            throw NaclUtilError.internalError
         }
         
         return data
@@ -60,7 +60,7 @@ struct NaclUtil {
         }
         
         if r != 0 {
-            throw(NaclUtilError.internalError)
+            throw NaclUtilError.internalError
         }
         
         return hash
@@ -184,7 +184,7 @@ public struct NaclSecretBox {
         }
         
         if result != 0 {
-            throw(NaclSecretBoxError.creationFailed)
+            throw NaclSecretBoxError.creationFailed
         }
         
         return m.subdata(in: Constants.Secretbox.zeroBytes..<c.count)
@@ -200,11 +200,11 @@ public struct NaclScalarMult {
     
     public static func scalarMult(n: Data, p: Data) throws -> Data {
         if n.count != Constants.Scalarmult.scalarBytes {
-            throw(NaclScalarMultError.invalidParameters)
+            throw NaclScalarMultError.invalidParameters
         }
         
         if p.count != Constants.Scalarmult.bytes {
-            throw(NaclScalarMultError.invalidParameters)
+            throw NaclScalarMultError.invalidParameters
         }
         
         var q = Data(count: Constants.Scalarmult.bytes)
@@ -218,7 +218,7 @@ public struct NaclScalarMult {
         }
         
         if result != 0 {
-            throw(NaclScalarMultError.creationFailed)
+            throw NaclScalarMultError.creationFailed
         }
         
         return q
@@ -226,7 +226,7 @@ public struct NaclScalarMult {
     
     public static func base(n: Data) throws -> Data {
         if n.count != Constants.Scalarmult.scalarBytes {
-            throw(NaclScalarMultError.invalidParameters)
+            throw NaclScalarMultError.invalidParameters
         }
         
         var q = Data(count: Constants.Scalarmult.bytes)
@@ -238,7 +238,7 @@ public struct NaclScalarMult {
         }
         
         if result != 0 {
-            throw(NaclScalarMultError.creationFailed)
+            throw NaclScalarMultError.creationFailed
         }
         
         return q
@@ -272,7 +272,7 @@ public struct NaclBox {
         }
         
         if result != 0 {
-            throw(NaclBoxError.creationFailed)
+            throw NaclBoxError.creationFailed
         }
         
         return k
@@ -291,7 +291,7 @@ public struct NaclBox {
     
     public static func keyPair(fromSecretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
         if sk.count != Constants.Box.secretKeyBytes {
-            throw(NaclBoxError.invalidParameters)
+            throw NaclBoxError.invalidParameters
         }
         
         return try NaclWrapper.crypto_box_keypair(secretKey: sk)
@@ -308,7 +308,7 @@ public struct NaclSign {
     
     public static func sign(message: Data, secretKey: Data) throws -> Data {
         if secretKey.count != Constants.Sign.secretKeyBytes{
-            throw(NaclSignError.invalidParameters)
+            throw NaclSignError.invalidParameters
         }
         
         var signedMessage = Data(count: Constants.Sign.bytes + message.count)
@@ -332,7 +332,7 @@ public struct NaclSign {
     
     public static func signOpen(signedMessage: Data, publicKey: Data) throws -> Data {
         if publicKey.count != Constants.Sign.publicKeyBytes {
-            throw(NaclSignError.invalidParameters)
+            throw NaclSignError.invalidParameters
         }
         
         var tmp = Data(count: signedMessage.count)
@@ -347,7 +347,7 @@ public struct NaclSign {
         }
         
         if result != 0 {
-            throw(NaclSignError.creationFailed)
+            throw NaclSignError.creationFailed
         }
         
         return tmp
@@ -363,11 +363,11 @@ public struct NaclSign {
     
     public static func signDetachedVerify(message: Data, sig: Data, publicKey: Data) throws -> Bool {
         if sig.count != Constants.Sign.bytes {
-            throw(NaclSignError.invalidParameters)
+            throw NaclSignError.invalidParameters
         }
         
         if publicKey.count != Constants.Sign.publicKeyBytes {
-            throw(NaclSignError.invalidParameters)
+            throw NaclSignError.invalidParameters
         }
         
         var sm = Data()
@@ -397,7 +397,7 @@ public struct NaclSign {
         
         public static func keyPair(fromSecretKey secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
             if secretKey.count != Constants.Sign.secretKeyBytes {
-                throw(NaclSignError.invalidParameters)
+                throw NaclSignError.invalidParameters
             }
             
             let pk = secretKey.subdata(in: Constants.Sign.publicKeyBytes..<Constants.Sign.secretKeyBytes)
@@ -407,7 +407,7 @@ public struct NaclSign {
         
         public static func keyPair(fromSeed seed: Data) throws -> (publicKey: Data, secretKey: Data) {
             if seed.count != Constants.Sign.seedBytes {
-                throw(NaclSignError.invalidParameters)
+                throw NaclSignError.invalidParameters
             }
             
             return try NaclWrapper.crypto_sign_keypair_seeded(secretKey: seed)
