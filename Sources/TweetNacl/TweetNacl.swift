@@ -9,6 +9,8 @@
 import Foundation
 import CTweetNacl
 
+// MARK: - Utilities
+
 public struct NaclUtil {
     
     public enum NaclUtilError: Error {
@@ -107,6 +109,8 @@ public struct NaclUtil {
     }
 }
 
+// MARK: - Internal wrapper
+
 struct NaclWrapper {
     enum NaclWrapperError: Error {
         case invalidParameters
@@ -154,6 +158,8 @@ struct NaclWrapper {
         return (pk, sk)
     }
 }
+
+// MARK: - Secret-key authenticated encryption
 
 public struct NaclSecretBox {
     public enum NaclSecretBoxError: Error {
@@ -213,6 +219,8 @@ public struct NaclSecretBox {
     }
 }
 
+// MARK: - Scalar multiplication
+
 public struct NaclScalarMult {
     public enum NaclScalarMultError: Error {
         case invalidParameters
@@ -267,6 +275,8 @@ public struct NaclScalarMult {
     }
 }
 
+// MARK: - Public-key authenticated encryption
+
 public struct NaclBox {
     
     public enum NaclBoxError: Error {
@@ -319,6 +329,8 @@ public struct NaclBox {
         return try NaclWrapper.crypto_box_keypair(secretKey: sk)
     }
 }
+
+// MARK: - Signatures
 
 public struct NaclSign {
     
