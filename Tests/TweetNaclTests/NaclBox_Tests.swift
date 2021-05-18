@@ -12,7 +12,7 @@ import XCTest
 class NaclBox_Test: XCTestCase {
     
     public var data: Array<String>?
-    private var nonce = Data(count: crypto_box_NONCEBYTES)
+    private var nonce = Data(count: Constants.Box.nonceBytes)
     
     
     override func setUp() {
