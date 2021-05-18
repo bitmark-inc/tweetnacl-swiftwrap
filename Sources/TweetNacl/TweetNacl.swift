@@ -93,14 +93,14 @@ struct NaclUtil {
     }
 }
 
-fileprivate struct NaclWrapper {
+struct NaclWrapper {
     public enum NaclWrapperError: Error {
         case invalidParameters
         case internalError
         case creationFailed
     }
     
-    fileprivate static func crypto_box_keypair(secretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
+    static func crypto_box_keypair(secretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
         var pk = Data(count: Constants.Box.secretKeyBytes)
         
         let result = pk.withUnsafeMutableBytes({ (pkPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
@@ -116,13 +116,13 @@ fileprivate struct NaclWrapper {
         return (pk, sk)
     }
     
-    fileprivate static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
+    static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
         let sk = try NaclUtil.randomBytes(length: Constants.Sign.secretKeyBytes)
         
         return try crypto_sign_keypair_seeded(secretKey: sk)
     }
     
-    fileprivate static func crypto_sign_keypair_seeded(secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
+    static func crypto_sign_keypair_seeded(secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
         var pk = Data(count: Constants.Sign.publicKeyBytes)
         var sk = Data(count: Constants.Sign.secretKeyBytes)
         sk.replaceSubrange(0..<Constants.Sign.publicKeyBytes, with: secretKey.subdata(in: 0..<Constants.Sign.publicKeyBytes))
