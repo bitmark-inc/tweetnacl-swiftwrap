@@ -69,7 +69,7 @@ class NaclSign_Test: XCTestCase {
     
     func testSignFromSeed() {
         do {
-            let seed = try NaclUtil.randomBytes(length: Constants.Sign.seedBytes)
+            let seed = try NaclUtil.secureRandomData(count: Constants.Sign.seedBytes)
             let k1 = try NaclSign.KeyPair.keyPair(fromSeed: seed)
             let k2 = try NaclSign.KeyPair.keyPair(fromSeed: seed)
             
@@ -104,10 +104,10 @@ class NaclSign_Test: XCTestCase {
                 
             XCTAssertThrowsError(try NaclSign.signDetachedVerify(message: message, sig: sig.subdata(in: 0..<1), publicKey: k.publicKey))
             
-            let badPublicKey = try NaclUtil.randomBytes(length: k.publicKey.count)
+            let badPublicKey = try NaclUtil.secureRandomData(count: k.publicKey.count)
             XCTAssertEqual(try NaclSign.signDetachedVerify(message: message, sig: sig, publicKey: badPublicKey), false)
             
-            let badSigKey = try NaclUtil.randomBytes(length: sig.count)
+            let badSigKey = try NaclUtil.secureRandomData(count: sig.count)
             XCTAssertEqual(try NaclSign.signDetachedVerify(message: message, sig: badSigKey, publicKey: k.publicKey), false)
         }
         catch {

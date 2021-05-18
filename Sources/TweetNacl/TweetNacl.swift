@@ -39,16 +39,38 @@ struct NaclUtil {
         }
     }
     
-    public static func randomBytes(length: Int) throws -> Data {
-        var data = Data(count: length)
-        let result = data.withUnsafeMutableBytes {
-            return SecRandomCopyBytes(kSecRandomDefault, length, $0)
+    public static func secureRandomData(count: Int) throws -> Data {
+        // Generation method is platform dependent
+        // (The Security framework is only available on Apple platforms).
+        #if os(Linux)
+
+        var bytes = [UInt8]()
+        for _ in 0..<count {
+            let randomByte = UInt8.random(in: UInt8.min...UInt8.max)
+            bytes.append(randomByte)
         }
+        let randomData = Data(bytes: &bytes, count: count)
+
+        return randomData
+
+        #else
+
+        var randomData = Data(count: count)
+        let result = try randomData.withUnsafeMutableBytes { bufferPointer -> Int32 in
+            guard let baseAddress = bufferPointer.baseAddress else {
+                throw NaclUtilError.internalError
+            }
+
+            return SecRandomCopyBytes(kSecRandomDefault, count, baseAddress)
+        }
+
         guard result == errSecSuccess else {
             throw NaclUtilError.internalError
         }
-        
-        return data
+
+        return randomData
+
+        #endif
     }
     
     public static func hash(message: Data) throws -> Data {
@@ -109,7 +131,7 @@ struct NaclWrapper {
     }
     
     static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
-        let sk = try NaclUtil.randomBytes(length: Constants.Sign.secretKeyBytes)
+        let sk = try NaclUtil.secureRandomData(count: Constants.Sign.secretKeyBytes)
         
         return try crypto_sign_keypair_seeded(secretKey: sk)
     }
@@ -284,7 +306,7 @@ public struct NaclBox {
     }
     
     public static func keyPair() throws -> (publicKey: Data, secretKey: Data) {
-        let sk = try NaclUtil.randomBytes(length: Constants.Box.secretKeyBytes)
+        let sk = try NaclUtil.secureRandomData(count: Constants.Box.secretKeyBytes)
         
         return try NaclWrapper.crypto_box_keypair(secretKey: sk)
     }
