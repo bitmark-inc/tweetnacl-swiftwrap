@@ -26,14 +26,14 @@ class NaclBox_Test: XCTestCase {
     }
     
     func testBox() {
-        let pk = NaclUtil.decodeBase64(string: data![0])!
-        let sk = NaclUtil.decodeBase64(string: data![1])!
-        let msg = NaclUtil.decodeBase64(string: data![2])!
+        let pk = Data(base64Encoded: data![0])!
+        let sk = Data(base64Encoded: data![1])!
+        let msg = Data(base64Encoded: data![2])!
         let goodBox = data![3]
         
         do {
             let box = try NaclBox.box(message: msg, nonce: nonce, publicKey: pk, secretKey: sk)
-            let boxEncoded = NaclUtil.encodeBase64(data: box)
+            let boxEncoded = box.base64EncodedString()
             let open = try NaclBox.open(message: box, nonce: nonce, publicKey: pk, secretKey: sk)
             
             XCTAssertEqual(boxEncoded, goodBox)

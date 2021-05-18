@@ -29,7 +29,7 @@ class NaclSign_Test: XCTestCase {
             XCTAssertEqual(keypair.publicKey.count, Constants.Sign.publicKeyBytes)
             XCTAssertEqual(keypair.secretKey.count, Constants.Sign.secretKeyBytes)
             XCTAssertNotEqual(keypair.secretKey.count, keypair.publicKey.count)
-            XCTAssertNotEqual(NaclUtil.encodeBase64(data: keypair.secretKey), NaclUtil.encodeBase64(data: keypair.publicKey))
+            XCTAssertNotEqual(keypair.secretKey.base64EncodedString(), keypair.publicKey.base64EncodedString())
         }
         catch {
             XCTFail()
@@ -41,8 +41,8 @@ class NaclSign_Test: XCTestCase {
         do {
             let k1 = try NaclSign.KeyPair.keyPair()
             let k2 = try NaclSign.KeyPair.keyPair(fromSecretKey: k1.secretKey)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.secretKey), NaclUtil.encodeBase64(data: k2.secretKey))
-            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.publicKey), NaclUtil.encodeBase64(data: k2.publicKey))
+            XCTAssertEqual(k1.secretKey.base64EncodedString(), k2.secretKey.base64EncodedString())
+            XCTAssertEqual(k1.publicKey.base64EncodedString(), k2.publicKey.base64EncodedString())
         }
         catch {
             XCTFail()
@@ -77,8 +77,8 @@ class NaclSign_Test: XCTestCase {
             XCTAssertEqual(k1.publicKey.count, Constants.Sign.publicKeyBytes)
             XCTAssertEqual(k2.secretKey.count, Constants.Sign.secretKeyBytes)
             XCTAssertEqual(k2.publicKey.count, Constants.Sign.publicKeyBytes)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.secretKey), NaclUtil.encodeBase64(data: k2.secretKey))
-            XCTAssertEqual(NaclUtil.encodeBase64(data: k1.publicKey), NaclUtil.encodeBase64(data: k2.publicKey))
+            XCTAssertEqual(k1.secretKey.base64EncodedString(), k2.secretKey.base64EncodedString())
+            XCTAssertEqual(k1.publicKey.base64EncodedString(), k2.publicKey.base64EncodedString())
         }
         catch {
             XCTFail()

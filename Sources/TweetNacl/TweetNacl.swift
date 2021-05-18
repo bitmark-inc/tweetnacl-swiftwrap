@@ -83,14 +83,6 @@ struct NaclUtil {
         
         return r == 0
     }
-    
-    public static func encodeBase64(data: Data) -> String {
-        return data.base64EncodedString()
-    }
-    
-    public static func decodeBase64(string: String) -> Data? {
-        return Data(base64Encoded: string)
-    }
 }
 
 struct NaclWrapper {
