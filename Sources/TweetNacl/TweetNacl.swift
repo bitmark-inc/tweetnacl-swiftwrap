@@ -9,7 +9,7 @@
 import Foundation
 import CTweetNacl
 
-struct NaclUtil {
+public struct NaclUtil {
     
     public enum NaclUtilError: Error {
         case badKeySize
