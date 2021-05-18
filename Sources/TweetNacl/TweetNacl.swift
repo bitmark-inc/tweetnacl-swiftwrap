@@ -58,14 +58,9 @@ public struct NaclUtil {
         #else
 
         var randomData = Data(count: count)
-        let result = try randomData.withUnsafeMutableBytes { bufferPointer -> Int32 in
-            guard let baseAddress = bufferPointer.baseAddress else {
-                throw NaclUtilError.internalError
-            }
-
-            return SecRandomCopyBytes(kSecRandomDefault, count, baseAddress)
+        let result = randomData.withUnsafeMutableBytes {
+            return SecRandomCopyBytes(kSecRandomDefault, count, $0)
         }
-
         guard result == errSecSuccess else {
             throw NaclUtilError.internalError
         }
