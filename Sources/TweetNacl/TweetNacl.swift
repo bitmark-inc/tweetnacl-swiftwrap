@@ -414,7 +414,7 @@ public struct NaclSign {
         }
         
         public static func keyPair(fromSeed seed: Data) throws -> (publicKey: Data, secretKey: Data) {
-            if seed.count != 32 {
+            if seed.count != Constants.Sign.seedBytes {
                 throw(NaclSignError.invalidParameters)
             }
             
