@@ -94,7 +94,7 @@ struct NaclUtil {
 }
 
 struct NaclWrapper {
-    public enum NaclWrapperError: Error {
+    enum NaclWrapperError: Error {
         case invalidParameters
         case internalError
         case creationFailed
