@@ -9,7 +9,9 @@
 import Foundation
 import CTweetNacl
 
-struct NaclUtil {
+// MARK: - Utilities
+
+public struct NaclUtil {
     
     public enum NaclUtilError: Error {
         case badKeySize
@@ -20,39 +22,56 @@ struct NaclUtil {
     }
     
     static func checkLengths(key: Data, nonce: Data) throws {
-        if key.count != crypto_secretbox_KEYBYTES {
-            throw(NaclUtilError.badKeySize)
+        if key.count != Constants.Secretbox.keyBytes {
+            throw NaclUtilError.badKeySize
         }
         
-        if nonce.count != crypto_secretbox_NONCEBYTES {
+        if nonce.count != Constants.Secretbox.nonceBytes {
             throw NaclUtilError.badNonceSize
         }
     }
     
     static func checkBoxLength(publicKey: Data, secretKey: Data) throws {
-        if publicKey.count != crypto_box_PUBLICKEYBYTES {
-            throw(NaclUtilError.badPublicKeySize)
+        if publicKey.count != Constants.Box.publicKeyBytes {
+            throw NaclUtilError.badPublicKeySize
         }
         
-        if secretKey.count != crypto_box_SECRETKEYBYTES {
-            throw(NaclUtilError.badSecretKeySize)
+        if secretKey.count != Constants.Box.secretKeyBytes{
+            throw NaclUtilError.badSecretKeySize
         }
     }
     
-    public static func randomBytes(length: Int) throws -> Data {
-        var data = Data(count: length)
-        let result = data.withUnsafeMutableBytes {
-            return SecRandomCopyBytes(kSecRandomDefault, length, $0)
+    public static func secureRandomData(count: Int) throws -> Data {
+        // Generation method is platform dependent
+        // (The Security framework is only available on Apple platforms).
+        #if os(Linux)
+
+        var bytes = [UInt8]()
+        for _ in 0..<count {
+            let randomByte = UInt8.random(in: UInt8.min...UInt8.max)
+            bytes.append(randomByte)
+        }
+        let randomData = Data(bytes: &bytes, count: count)
+
+        return randomData
+
+        #else
+
+        var randomData = Data(count: count)
+        let result = randomData.withUnsafeMutableBytes {
+            return SecRandomCopyBytes(kSecRandomDefault, count, $0)
         }
         guard result == errSecSuccess else {
-            throw(NaclUtilError.internalError)
+            throw NaclUtilError.internalError
         }
-        
-        return data
+
+        return randomData
+
+        #endif
     }
     
     public static func hash(message: Data) throws -> Data {
-        var hash = Data(count: crypto_hash_BYTES)
+        var hash = Data(count: Constants.Hash.bytes)
         let r = hash.withUnsafeMutableBytes { (hashPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return message.withUnsafeBytes({ (messagePointer: UnsafePointer<UInt8>) -> Int32 in
                 return CTweetNacl.crypto_hash_sha512_tweet(hashPointer, messagePointer, UInt64(message.count))
@@ -60,7 +79,7 @@ struct NaclUtil {
         }
         
         if r != 0 {
-            throw(NaclUtilError.internalError)
+            throw NaclUtilError.internalError
         }
         
         return hash
@@ -83,25 +102,19 @@ struct NaclUtil {
         
         return r == 0
     }
-    
-    public static func encodeBase64(data: Data) -> String {
-        return data.base64EncodedString()
-    }
-    
-    public static func decodeBase64(string: String) -> Data? {
-        return Data(base64Encoded: string)
-    }
 }
 
-fileprivate struct NaclWrapper {
-    public enum NaclWrapperError: Error {
+// MARK: - Internal wrapper
+
+struct NaclWrapper {
+    enum NaclWrapperError: Error {
         case invalidParameters
         case internalError
         case creationFailed
     }
     
-    fileprivate static func crypto_box_keypair(secretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
-        var pk = Data(count: crypto_box_SECRETKEYBYTES)
+    static func crypto_box_keypair(secretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
+        var pk = Data(count: Constants.Box.secretKeyBytes)
         
         let result = pk.withUnsafeMutableBytes({ (pkPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return sk.withUnsafeBytes({ (skPointer: UnsafePointer<UInt8>) -> Int32 in
@@ -116,16 +129,16 @@ fileprivate struct NaclWrapper {
         return (pk, sk)
     }
     
-    fileprivate static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
-        let sk = try NaclUtil.randomBytes(length: crypto_sign_SECRETKEYBYTES)
+    static func crypto_sign_keypair() throws -> (publicKey: Data, secretKey: Data) {
+        let sk = try NaclUtil.secureRandomData(count: Constants.Sign.secretKeyBytes)
         
         return try crypto_sign_keypair_seeded(secretKey: sk)
     }
     
-    fileprivate static func crypto_sign_keypair_seeded(secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
-        var pk = Data(count: crypto_sign_PUBLICKEYBYTES)
-        var sk = Data(count: crypto_sign_SECRETKEYBYTES)
-        sk.replaceSubrange(0..<crypto_sign_PUBLICKEYBYTES, with: secretKey.subdata(in: 0..<crypto_sign_PUBLICKEYBYTES))
+    static func crypto_sign_keypair_seeded(secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
+        var pk = Data(count: Constants.Sign.publicKeyBytes)
+        var sk = Data(count: Constants.Sign.secretKeyBytes)
+        sk.replaceSubrange(0..<Constants.Sign.publicKeyBytes, with: secretKey.subdata(in: 0..<Constants.Sign.publicKeyBytes))
         
         let result = pk.withUnsafeMutableBytes({ (pkPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return sk.withUnsafeMutableBytes({ (skPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
@@ -141,6 +154,8 @@ fileprivate struct NaclWrapper {
     }
 }
 
+// MARK: - Secret-key authenticated encryption
+
 public struct NaclSecretBox {
     public enum NaclSecretBoxError: Error {
         case invalidParameters
@@ -151,8 +166,8 @@ public struct NaclSecretBox {
     public static func secretBox(message: Data, nonce: Data, key: Data) throws -> Data {
         try NaclUtil.checkLengths(key: key, nonce: nonce)
         
-        var m = Data(count: crypto_secretbox_ZEROBYTES + message.count)
-        m.replaceSubrange(crypto_secretbox_ZEROBYTES..<m.count, with: message)
+        var m = Data(count: Constants.Secretbox.zeroBytes + message.count)
+        m.replaceSubrange(Constants.Secretbox.zeroBytes..<m.count, with: message)
         
         var c = Data(count: m.count)
         
@@ -169,15 +184,15 @@ public struct NaclSecretBox {
         if result != 0 {
             throw NaclSecretBoxError.internalError
         }
-        return c.subdata(in: crypto_secretbox_BOXZEROBYTES..<c.count)
+        return c.subdata(in: Constants.Secretbox.boxZeroBytes..<c.count)
     }
     
     public static func open(box: Data, nonce: Data, key: Data) throws -> Data {
         try NaclUtil.checkLengths(key: key, nonce: nonce)
         
         // Fill data
-        var c = Data(count: crypto_secretbox_BOXZEROBYTES + box.count)
-        c.replaceSubrange(crypto_secretbox_BOXZEROBYTES..<c.count, with: box)
+        var c = Data(count: Constants.Secretbox.boxZeroBytes + box.count)
+        c.replaceSubrange(Constants.Secretbox.boxZeroBytes..<c.count, with: box)
         
         var m = Data(count: c.count)
         
@@ -192,12 +207,14 @@ public struct NaclSecretBox {
         }
         
         if result != 0 {
-            throw(NaclSecretBoxError.creationFailed)
+            throw NaclSecretBoxError.creationFailed
         }
         
-        return m.subdata(in: crypto_secretbox_ZEROBYTES..<c.count)
+        return m.subdata(in: Constants.Secretbox.zeroBytes..<c.count)
     }
 }
+
+// MARK: - Scalar multiplication
 
 public struct NaclScalarMult {
     public enum NaclScalarMultError: Error {
@@ -207,15 +224,15 @@ public struct NaclScalarMult {
     }
     
     public static func scalarMult(n: Data, p: Data) throws -> Data {
-        if n.count != crypto_scalarmult_SCALARBYTES {
-            throw(NaclScalarMultError.invalidParameters)
+        if n.count != Constants.Scalarmult.scalarBytes {
+            throw NaclScalarMultError.invalidParameters
         }
         
-        if p.count != crypto_scalarmult_BYTES {
-            throw(NaclScalarMultError.invalidParameters)
+        if p.count != Constants.Scalarmult.bytes {
+            throw NaclScalarMultError.invalidParameters
         }
         
-        var q = Data(count: crypto_scalarmult_BYTES)
+        var q = Data(count: Constants.Scalarmult.bytes)
         
         let result = q.withUnsafeMutableBytes { (qPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return n.withUnsafeBytes({ (nPointer: UnsafePointer<UInt8>) -> Int32 in
@@ -226,18 +243,18 @@ public struct NaclScalarMult {
         }
         
         if result != 0 {
-            throw(NaclScalarMultError.creationFailed)
+            throw NaclScalarMultError.creationFailed
         }
         
         return q
     }
     
     public static func base(n: Data) throws -> Data {
-        if n.count != crypto_scalarmult_SCALARBYTES {
-            throw(NaclScalarMultError.invalidParameters)
+        if n.count != Constants.Scalarmult.scalarBytes {
+            throw NaclScalarMultError.invalidParameters
         }
         
-        var q = Data(count: crypto_scalarmult_BYTES)
+        var q = Data(count: Constants.Scalarmult.bytes)
         
         let result = q.withUnsafeMutableBytes { (qPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return n.withUnsafeBytes({ (nPointer: UnsafePointer<UInt8>) -> Int32 in
@@ -246,12 +263,14 @@ public struct NaclScalarMult {
         }
         
         if result != 0 {
-            throw(NaclScalarMultError.creationFailed)
+            throw NaclScalarMultError.creationFailed
         }
         
         return q
     }
 }
+
+// MARK: - Public-key authenticated encryption
 
 public struct NaclBox {
     
@@ -269,7 +288,7 @@ public struct NaclBox {
     public static func before(publicKey: Data, secretKey: Data) throws -> Data {
         try NaclUtil.checkBoxLength(publicKey: publicKey, secretKey: secretKey)
         
-        var k = Data(count: crypto_box_BEFORENMBYTES)
+        var k = Data(count: Constants.Box.beforeNMBytes)
         
         let result = k.withUnsafeMutableBytes { (kPointer: UnsafeMutablePointer<UInt8>) -> Int32 in
             return publicKey.withUnsafeBytes({ (pkPointer: UnsafePointer<UInt8>) -> Int32 in
@@ -280,7 +299,7 @@ public struct NaclBox {
         }
         
         if result != 0 {
-            throw(NaclBoxError.creationFailed)
+            throw NaclBoxError.creationFailed
         }
         
         return k
@@ -292,19 +311,21 @@ public struct NaclBox {
     }
     
     public static func keyPair() throws -> (publicKey: Data, secretKey: Data) {
-        let sk = try NaclUtil.randomBytes(length: crypto_box_SECRETKEYBYTES)
+        let sk = try NaclUtil.secureRandomData(count: Constants.Box.secretKeyBytes)
         
         return try NaclWrapper.crypto_box_keypair(secretKey: sk)
     }
     
     public static func keyPair(fromSecretKey sk: Data) throws -> (publicKey: Data, secretKey: Data) {
-        if sk.count != crypto_box_SECRETKEYBYTES {
-            throw(NaclBoxError.invalidParameters)
+        if sk.count != Constants.Box.secretKeyBytes {
+            throw NaclBoxError.invalidParameters
         }
         
         return try NaclWrapper.crypto_box_keypair(secretKey: sk)
     }
 }
+
+// MARK: - Signatures
 
 public struct NaclSign {
     
@@ -315,11 +336,11 @@ public struct NaclSign {
     }
     
     public static func sign(message: Data, secretKey: Data) throws -> Data {
-        if secretKey.count != crypto_sign_SECRETKEYBYTES {
-            throw(NaclSignError.invalidParameters)
+        if secretKey.count != Constants.Sign.secretKeyBytes{
+            throw NaclSignError.invalidParameters
         }
         
-        var signedMessage = Data(count: crypto_sign_BYTES + message.count)
+        var signedMessage = Data(count: Constants.Sign.bytes + message.count)
         
         let tmpLength = UnsafeMutablePointer<UInt64>.allocate(capacity: 1)
         
@@ -339,8 +360,8 @@ public struct NaclSign {
     }
     
     public static func signOpen(signedMessage: Data, publicKey: Data) throws -> Data {
-        if publicKey.count != crypto_sign_PUBLICKEYBYTES {
-            throw(NaclSignError.invalidParameters)
+        if publicKey.count != Constants.Sign.publicKeyBytes {
+            throw NaclSignError.invalidParameters
         }
         
         var tmp = Data(count: signedMessage.count)
@@ -355,7 +376,7 @@ public struct NaclSign {
         }
         
         if result != 0 {
-            throw(NaclSignError.creationFailed)
+            throw NaclSignError.creationFailed
         }
         
         return tmp
@@ -364,23 +385,23 @@ public struct NaclSign {
     public static func signDetached(message: Data, secretKey: Data) throws -> Data {
         let signedMessage = try sign(message: message, secretKey: secretKey)
         
-        let sig = signedMessage.subdata(in: 0..<crypto_sign_BYTES)
+        let sig = signedMessage.subdata(in: 0..<Constants.Sign.bytes)
         
         return sig as Data
     }
     
     public static func signDetachedVerify(message: Data, sig: Data, publicKey: Data) throws -> Bool {
-        if sig.count != crypto_sign_BYTES {
-            throw(NaclSignError.invalidParameters)
+        if sig.count != Constants.Sign.bytes {
+            throw NaclSignError.invalidParameters
         }
         
-        if publicKey.count != crypto_sign_PUBLICKEYBYTES {
-            throw(NaclSignError.invalidParameters)
+        if publicKey.count != Constants.Sign.publicKeyBytes {
+            throw NaclSignError.invalidParameters
         }
         
         var sm = Data()
         
-        var m = Data(count: crypto_sign_BYTES + message.count)
+        var m = Data(count: Constants.Sign.bytes + message.count)
         
         sm.append(sig )
         sm.append(message)
@@ -404,18 +425,18 @@ public struct NaclSign {
         }
         
         public static func keyPair(fromSecretKey secretKey: Data) throws -> (publicKey: Data, secretKey: Data) {
-            if secretKey.count != crypto_sign_SECRETKEYBYTES {
-                throw(NaclSignError.invalidParameters)
+            if secretKey.count != Constants.Sign.secretKeyBytes {
+                throw NaclSignError.invalidParameters
             }
             
-            let pk = secretKey.subdata(in: crypto_sign_PUBLICKEYBYTES..<crypto_sign_SECRETKEYBYTES)
+            let pk = secretKey.subdata(in: Constants.Sign.publicKeyBytes..<Constants.Sign.secretKeyBytes)
             
             return (pk, secretKey)
         }
         
         public static func keyPair(fromSeed seed: Data) throws -> (publicKey: Data, secretKey: Data) {
-            if seed.count != 32 {
-                throw(NaclSignError.invalidParameters)
+            if seed.count != Constants.Sign.seedBytes {
+                throw NaclSignError.invalidParameters
             }
             
             return try NaclWrapper.crypto_sign_keypair_seeded(secretKey: seed)

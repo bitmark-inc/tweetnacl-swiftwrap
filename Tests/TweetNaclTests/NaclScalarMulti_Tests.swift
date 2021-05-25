@@ -48,25 +48,25 @@ class NaclScalarMulti_Tests: XCTestCase {
     
     func testScalarMulti() {
         let pk1Dec = data![0]
-        let pk1 = NaclUtil.decodeBase64(string: pk1Dec)!
-        let sk1 = NaclUtil.decodeBase64(string: data![1])!
+        let pk1 = Data(base64Encoded: pk1Dec)!
+        let sk1 = Data(base64Encoded: data![1])!
         let pk2Dec = data![2]
-        let pk2 = NaclUtil.decodeBase64(string: pk2Dec)!
-        let sk2 = NaclUtil.decodeBase64(string: data![3])!
+        let pk2 = Data(base64Encoded: pk2Dec)!
+        let sk2 = Data(base64Encoded: data![3])!
         let out = data![4]
         
         do {
             let jpk1 = try NaclScalarMult.base(n: sk1)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: jpk1), pk1Dec)
+            XCTAssertEqual(jpk1.base64EncodedString(), pk1Dec)
             
             let jpk2 = try NaclScalarMult.base(n: sk2)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: jpk2), pk2Dec)
+            XCTAssertEqual(jpk2.base64EncodedString(), pk2Dec)
             
             let jout1 = try NaclScalarMult.scalarMult(n: sk1, p: pk2)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: jout1), out)
+            XCTAssertEqual(jout1.base64EncodedString(), out)
             
             let jout2 = try NaclScalarMult.scalarMult(n: sk2, p: pk1)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: jout2), out)
+            XCTAssertEqual(jout2.base64EncodedString(), out)
         }
         catch {
             XCTFail()

@@ -26,21 +26,21 @@ class NaclSecretbox_Tests: XCTestCase {
     }
     
     func testSecretBox() {
-        let key = NaclUtil.decodeBase64(string: data![0])!
-        let nonce = NaclUtil.decodeBase64(string: data![1])!
+        let key = Data(base64Encoded: data![0])!
+        let nonce = Data(base64Encoded: data![1])!
         let encodedMessage = data![2]
-        let msg = NaclUtil.decodeBase64(string: encodedMessage)!
+        let msg = Data(base64Encoded: encodedMessage)!
         let goodBox = data![3]
         
         do {
             let box = try NaclSecretBox.secretBox(message: msg, nonce: nonce, key: key)
-            let boxEncoded = NaclUtil.encodeBase64(data: box)
+            let boxEncoded = box.base64EncodedString()
             
             XCTAssertEqual(boxEncoded, goodBox)
             
             let openedBox = try NaclSecretBox.open(box: box, nonce: nonce, key: key)
             XCTAssertNotNil(openedBox)
-            XCTAssertEqual(NaclUtil.encodeBase64(data: openedBox), encodedMessage)
+            XCTAssertEqual(openedBox.base64EncodedString(), encodedMessage)
         }
         catch {
             XCTFail()
