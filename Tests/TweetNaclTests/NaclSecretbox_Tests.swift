@@ -51,8 +51,7 @@ class NaclSecretbox_Tests: XCTestCase {
         
         let testSuite = XCTestSuite(name: NSStringFromClass(self))
         
-        let testBundle = Bundle(for: NaclSecretbox_Tests.self)
-        let fileURL = testBundle.url(forResource: "SecretboxTestData", withExtension: "json")
+        let fileURL = Bundle.module.url(forResource: "SecretboxTestData", withExtension: "json")
         let fileData = try! Data(contentsOf: fileURL!)
         let jsonDecoder = JSONDecoder()
         let arrayOfData = try! jsonDecoder.decode([[String]].self, from: fileData)
