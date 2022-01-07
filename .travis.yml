@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode13.2
 branches:
   only:
     - master
@@ -9,8 +9,5 @@ before_install:
 
 script:
 - swift build
-- xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-macOS test | xcpretty
-- xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-iOS test | xcpretty
-- xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-watchOS test | xcpretty
-- xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-tvOS test | xcpretty
+- swift test
 after_success: bash <(curl -s https://codecov.io/bash)
