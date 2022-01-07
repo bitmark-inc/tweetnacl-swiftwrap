@@ -20,13 +20,13 @@ matrix:
       os: osx
       osx_image: xcode13.2
       script: xcrun xcodebuild -project TweetNacl.xcodeproj -scheme TweetNacl-tvOS test | xcpretty
-    - name: "linux"
-      os: linux
-      env: TEST=Unix swift=5.5
-      install: 
-      - curl "https://swift.org/builds/swift-${swift}-release/ubuntu1604/swift-${swift}-RELEASE/swift-${swift}-RELEASE-ubuntu16.04.tar.gz" > /tmp/swift.tar.gz;
-      - tar -xzf /tmp/swift.tar.gz -C /tmp;
-      - export PATH="${PATH}:/tmp/swift-${swift}-RELEASE-ubuntu16.04/usr/bin";
-      - swift -version;
-      script: swift test
+    # - name: "linux"
+    #   os: linux
+    #   env: swift=5.5
+    #   install: 
+    #   - curl "https://swift.org/builds/swift-${swift}-release/ubuntu1604/swift-${swift}-RELEASE/swift-${swift}-RELEASE-ubuntu16.04.tar.gz" > /tmp/swift.tar.gz
+    #   - tar -xzf /tmp/swift.tar.gz -C /tmp
+    #   - export PATH="${PATH}:/tmp/swift-${swift}-RELEASE-ubuntu16.04/usr/bin"
+    #   - swift -version
+    #   script: swift test
 after_success: bash <(curl -s https://codecov.io/bash)
