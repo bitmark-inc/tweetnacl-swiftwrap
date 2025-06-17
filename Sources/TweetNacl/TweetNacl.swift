@@ -44,7 +44,7 @@ public struct NaclUtil {
     public static func secureRandomData(count: Int) throws -> Data {
         // Generation method is platform dependent
         // (The Security framework is only available on Apple platforms).
-        #if os(Linux)
+        #if os(Linux) || os(Windows)
 
         var bytes = [UInt8]()
         for _ in 0..<count {
